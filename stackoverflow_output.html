@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+
+<html class="html__responsive" itemscope="" itemtype="https://schema.org/QAPage" lang="en">
+<head>
+<title>python - Difference between .string and .text BeautifulSoup - Stack Overflow</title>
+<link href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196" rel="shortcut icon"/>
+<link href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" rel="apple-touch-icon"/>
+<link href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" rel="image_src"/>
+<link href="/opensearch.xml" rel="search" title="Stack Overflow" type="application/opensearchdescription+xml"/>
+<link href="https://stackoverflow.com/questions/25327693/difference-between-string-and-text-beautifulsoup" rel="canonical">
+<meta content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0" name="viewport"/>
+<meta content="website" property="og:type">
+<meta content="https://stackoverflow.com/questions/25327693/difference-between-string-and-text-beautifulsoup" property="og:url"/>
+<meta content="Stack Overflow" property="og:site_name"/>
+<meta content="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded" itemprop="image primaryImageOfPage" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="stackoverflow.com" name="twitter:domain"/>
+<meta content="Difference between .string and .text BeautifulSoup" itemprop="name" name="twitter:title" property="og:title"/>
+<meta content="I noticed something odd about when working with BeautifulSoup and couldn't find any documentation to support this so I wanted to ask over here.
+
+Say we have a tags like these that we have parsed wi..." itemprop="description" name="twitter:description" property="og:description"/>
+<script id="webpack-public-path" type="text/uri-list">https://cdn.sstatic.net/</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script defer="" src="https://cdn.sstatic.net/Js/third-party/npm/@stackoverflow/stacks/dist/js/stacks.min.js?v=ad920dba3340"></script>
+<script src="https://cdn.sstatic.net/Js/stub.en.js?v=34b15b21ff80"></script>
+<link href="https://cdn.sstatic.net/Shared/stacks.css?v=73d389de9f03" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=7e40c664dcde" rel="stylesheet" type="text/css"/>
+<link href="/feeds/question/25327693" rel="alternate" title="Feed for question 'Difference between .string and .text BeautifulSoup'" type="application/atom+xml"/>
+<script>
+            StackExchange.ready(function () {
+
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+
+                StackExchange.question.init({showAnswerHelp:true,showTrendingSortLaunchPopover:false,showTrendingSortPostLaunchPopover:false,totalCommentCount:0,shownCommentCount:0,enableTables:true,questionId:25327693});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '25327693');
+                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.js-post-body'); });
+
+
+            });
+        </script>
+<link href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=a4d77abedec3" rel="stylesheet" type="text/css"/>
+<script data-module-name="Shared/options.mod" data-role="module-args" type="application/json">{"options":{"locale":"en","serverTime":1689776954,"routeName":"Questions/Show","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow","description":"Q\u0026A for professional and enthusiast programmers","isNoticesTabEnabled":true,"enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"cookieDomain":".stackoverflow.com","childUrl":"https://meta.stackoverflow.com","negativeVoteScoreFloor":null,"enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"0bbaf3e5a2c7c822ad08d629ab4157766f809a1270358c40cdc93e0d87203291","tid":"89619a3f-ee5b-48ea-cd7f-1106ca20a975","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}}}}</script>
+<script data-module-name="Shared/settings.mod" data-role="module-args" type="application/json">{"settings":{"userMessaging":{"showNewFeatureNotice":true},"tags":{},"subscriptions":{"defaultBasicMaxTrueUpSeats":250,"defaultFreemiumMaxTrueUpSeats":50,"defaultMaxTrueUpSeats":1000},"snippets":{"renderDomain":"stacksnippets.net","snippetsEnabled":true},"site":{"allowImageUploads":true,"enableImgurHttps":true,"enableUserHovercards":true,"forceHttpsImages":true,"stacksEditorPreviewEnabled":true,"styleCode":true},"search":{},"questions":{"enableQuestionTitleLengthLiveWarning":true,"enableSavesFeature":true,"maxTitleSize":150,"questionTitleLengthStartLiveWarningChars":50},"intercom":{"appId":"inf0secd","enableJavascriptImplementationFor":true,"hostBaseUrl":"https://stacksnippets.net"},"paths":{"jQueryUICSSPath":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css","jQueryUIJSPath":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"},"mentions":{"maxNumUsersInDropdown":50},"markdown":{"enableTables":true},"legal":{"oneTrustConfigId":"c3d9f1e3-55f3-4eba-b268-46cee4c6789c"},"flags":{"allowRetractingCommentFlags":true,"allowRetractingFlags":true},"elections":{"opaVoteResultsBaseUrl":"https://www.opavote.com/results/"},"comments":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true}}}</script>
+<script>StackExchange.init();</script>
+<script>
+        StackExchange.using.setCacheBreakers({"Js/adops.en.js":"6da43f5e0a84","Js/ask.en.js":"","Js/begin-edit-event.en.js":"20edbaccceae","Js/copy-transpiled.en.js":"d31dc7eba3bc","Js/events.en.js":"","Js/explore-qlist.en.js":"2b1f34938b8b","Js/full-anon.en.js":"4cfd379baed1","Js/full.en.js":"aa3a5678eb58","Js/highlightjs-loader.en.js":"510e2f94c2bf","Js/inline-tag-editing.en.js":"db4721cf46fa","Js/keyboard-shortcuts.en.js":"107c2ac31497","Js/markdown-it-loader.en.js":"5818ef89ff9d","Js/mentions-transpiled.en.js":"aaeac2684aa8","Js/moderator.en.js":"436d64ed1be0","Js/postCollections-transpiled.en.js":"216ffeda5016","Js/post-validation.en.js":"cce75daddbbd","Js/question-editor.en.js":"","Js/review-v2-transpiled.en.js":"69c0e3530e0b","Js/revisions.en.js":"e6acc03fd5b5","Js/stacks-editor.en.js":"146f5c06067a","Js/tageditor.en.js":"dc13482a67f8","Js/tageditornew.en.js":"cebacb19d403","Js/tagsuggestions.en.js":"bd6ec908f2a7","Js/unlimited-transpiled.en.js":"e776ac1beccb","Js/wmd.en.js":"8c0f9d3b0a66","Js/snippet-javascript-codemirror.en.js":"ae1dcf38deb7"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+<noscript id="noscript-css"><style>body,.s-topbar{margin-top:1.9em}p.m { font-family: Helvetica; font-weight: bold; color: #666666; } p.m b { line-height: 2; font-family: Helvetica; font-weight: bold; color: #111111 } body { background-color:#edd1e0; }</style></noscript>
+</meta></link><style type="text/css"></style></head>
+<body class="question-page unified-theme">
+<div id="notify-container"></div>
+<div id="custom-header"></div>
+<header class="s-topbar ps-fixed t0 l0 js-top-bar">
+<div class="s-topbar--container">
+<a aria-controls="left-sidebar" aria-expanded="false" aria-haspopup="true" class="s-topbar--menu-btn js-left-sidebar-toggle" href="#" role="menuitem"><span class="m"></span></a>
+<div class="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
+<div class="left-sidebar js-unpinned-left-sidebar" data-can-be="left-sidebar" data-is-here-when="sm"></div>
+</div>
+<a class="s-topbar--logo js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})" href="https://stackoverflow.com">
+<span class="-img _glyph m"><b>Sta</b>ck <b>Overf</b>low </span>
+</a>
+<ol class="s-navigation" role="presentation">
+<li class="md:d-none">
+<a class="s-navigation--item js-gps-track" data-ga='["top navigation","about menu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:7})" href="https://stackoverflow.co/">About</a>
+</li>
+<li>
+<a aria-controls="products-popover" class="s-navigation--item js-gps-track js-products-menu" data-action="s-popover#toggle" data-controller="s-popover" data-ga='["top navigation","products menu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:1})" data-s-popover-placement="bottom" data-s-popover-toggle-class="is-selected" href="#">
+						Products
+					</a>
+</li>
+<li class="md:d-none">
+<a class="s-navigation--item js-gps-track" data-ga='["top navigation","learn more - teams",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:7})" href="https://stackoverflow.co/teams/">For Teams</a>
+</li>
+</ol>
+<div aria-hidden="true" class="s-popover ws2 mtn2 p0" id="products-popover" role="menu">
+<div class="s-popover--arrow"></div>
+<ol class="list-reset s-anchors s-anchors__inherit">
+<li class="m6">
+<a class="bar-sm p6 d-block h:bg-black-100 js-gps-track" data-ga='["top navigation","public qa submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:2})" href="/questions">
+<span class="fs-body1 d-block m"><b>Sta</b>ck <b>Overf</b>low </span>
+<span class="fs-caption d-block fc-light m"><b>Publ</b>ic <b>ques</b>tions &amp; <b>ans</b>wers </span>
+</a>
+</li>
+<li class="m6">
+<a class="bar-sm p6 d-block h:bg-black-100 js-gps-track" data-ga='["top navigation","teams submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:3})" href="https://stackoverflow.co/teams/">
+<span class="fs-body1 d-block m"><b>Sta</b>ck <b>Overf</b>low <b>f</b>or <b>Tea</b>ms </span>
+<span class="fs-caption d-block fc-light m"><b>Whe</b>re <b>devel</b>opers &amp; <b>techno</b>logists <b>sh</b>are <b>pri</b>vate <b>know</b>ledge <b>wi</b>th <b>cowo</b>rkers </span>
+</a>
+</li>
+<li class="m6">
+<a class="bar-sm p6 d-block h:bg-black-100 js-gps-track" data-ga='["top navigation","talent submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:5})" href="https://stackoverflow.co/talent/">
+<span class="fs-body1 d-block m"><b>Tale</b>nt </span>
+<span class="fs-caption d-block fc-light m">
+								<b>Build</b> <b>yo</b>ur <b>empl</b>oyer <b>brand
+							</b> </span>
+</a>
+</li>
+<li class="m6">
+<a class="bar-sm p6 d-block h:bg-black-100 js-gps-track" data-ga='["top navigation","advertising submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:6})" href="https://stackoverflow.co/advertising/">
+<span class="fs-body1 d-block m"><b>Advert</b>ising </span>
+<span class="fs-caption d-block fc-light m"><b>Rea</b>ch <b>devel</b>opers &amp; <b>techno</b>logists <b>worl</b>dwide </span>
+</a>
+</li>
+<li class="bt bc-black-075 py6 px6 bbr-md">
+<a class="bar-sm p6 d-block h:bg-black-100 js-gps-track" data-ga='["top navigation","labs submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:7})" href="https://stackoverflow.co/labs/">
+<span class="fs-body1 d-block m"><b>Lab</b>s </span>
+<span class="fs-caption d-block fc-light m"><b>Th</b>e <b>fut</b>ure <b>o</b>f <b>colle</b>ctive <b>know</b>ledge <b>sha</b>ring </span>
+</a>
+</li>
+<li class="bg-black-025 bt bc-black-075 py6 px6 bbr-md">
+<a class="fc-light d-block py6 px6 h:fc-black-800 js-gps-track" data-ga='["top navigation","about submenu click",null,null,null]' data-gps-track="top_nav.products.click({location:2, destination:7})" href="https://stackoverflow.co/">About the company</a>
+</li>
+</ol>
+</div>
+<form action="/search" autocomplete="off" class="s-topbar--searchbar js-searchbar" id="search" role="search">
+<div class="s-topbar--searchbar--input-group">
+<input aria-controls="top-search" aria-label="Search" autocomplete="off" class="s-input s-input__search js-search-field" data-action="focus-&gt;s-popover#show" data-controller="s-popover" data-s-popover-placement="bottom-start" maxlength="240" name="q" placeholder="Search…" role="combobox" type="text" value=""/>
+<svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" height="18" viewbox="0 0 18 18" width="18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+<div class="s-popover p0 wmx100 wmn4 sm:wmn-initial js-top-search-popover" id="top-search" role="menu">
+<div class="s-popover--arrow"></div>
+<div class="js-spinner p24 d-flex ai-center jc-center d-none">
+<div class="s-spinner s-spinner__sm fc-orange-400">
+<div class="v-visible-sr">Loading…</div>
+</div>
+</div>
+<span class="v-visible-sr js-screen-reader-info m"></span>
+<div class="js-ac-results overflow-y-auto hmx3 d-none"></div>
+<div aria-describedby="Tips for searching" class="js-search-hints"></div>
+</div>
+</div>
+</form>
+<nav class="h100 ml-auto overflow-x-auto pr12">
+<ol class="s-topbar--content" role="menubar">
+<li class="js-topbar-dialog-corral" role="presentation">
+<div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
+<div class="header fw-wrap">
+<h3 class="flex--item m">
+ <a href="https://stackoverflow.com"><b>cur</b>rent <b>comm</b>unity </a>
+ </h3>
+<div class="flex--item fl1">
+<div class="ai-center d-flex jc-end">
+<button aria-label="Close" class="js-close-button s-btn s-btn__muted p0 ml8 d-none sm:d-block" type="button">
+<svg aria-hidden="true" class="svg-icon iconClear" height="18" viewbox="0 0 18 18" width="18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="modal-content bg-powder-050 current-site-container">
+<ul class="current-site">
+<li class="d-flex">
+<div class="fl1">
+<a class="current-site-link site-link js-gps-track d-flex gs8 gsx" data-gps-track="site_switcher.click({ item_type:3 })" data-id="1" href="https://stackoverflow.com">
+<div class="favicon favicon-stackoverflow site-icon flex--item" title="Stack Overflow"></div>
+<span class="flex--item fl1 m">
+            <b>Sta</b>ck <b>Overf</b>low
+         </span>
+</a>
+</div>
+<div class="related-links">
+<a class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })" href="https://stackoverflow.com/help">help</a>
+<a class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })" href="https://chat.stackoverflow.com/?tab=site&amp;host=stackoverflow.com">chat</a>
+</div>
+</li>
+<li class="related-site d-flex">
+<div class="L-shaped-icon-container">
+<span class="L-shaped-icon m"></span>
+</div>
+<a class="site-link js-gps-track d-flex gs8 gsx" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })" data-id="552" href="https://meta.stackoverflow.com">
+<div class="favicon favicon-stackoverflowmeta site-icon flex--item" title="Meta Stack Overflow"></div>
+<span class="flex--item fl1 m">
+            <b>Met</b>a <b>Sta</b>ck <b>Overf</b>low
+         </span>
+</a>
+</li>
+</ul>
+</div>
+<div class="header" id="your-communities-header">
+<h3 class="m">
+<b>yo</b>ur <b>commu</b>nities             </h3>
+</div>
+<div class="modal-content" id="your-communities-section">
+<div class="call-to-login">
+<a class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })" href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup">Sign up</a> or <a class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })" href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup">log in</a> to customize your list.                </div>
+</div>
+<div class="header">
+<h3 class="m"><a href="https://stackexchange.com/sites"><b>mo</b>re <b>st</b>ack <b>exch</b>ange <b>commu</b>nities </a>
+ </h3>
+<a class="float-right" href="https://stackoverflow.blog">company blog</a>
+</div>
+<div class="modal-content">
+<div class="child-content"></div>
+</div>
+</div>
+</li>
+<li role="none"><button aria-controls="search" aria-haspopup="true" aria-label="Search" class="s-topbar--item s-btn s-btn__icon s-btn__muted d-none sm:d-inline-flex js-searchbar-trigger" role="menuitem" title="Click to show search"><svg aria-hidden="true" class="svg-icon iconSearch" height="18" viewbox="0 0 18 18" width="18"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg></button></li>
+<li role="none">
+<a class="s-topbar--item s-topbar--item__unset s-btn s-btn__filled ws-nowrap js-gps-track" data-ga='["top navigation","login button click",null,null,null]' data-gps-track="login.click" href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup" rel="nofollow" role="menuitem">Log in</a>
+</li>
+<li role="none"><a class="s-topbar--item s-topbar--item__unset ml4 s-btn s-btn__primary ws-nowrap" data-ga='["sign up","Sign Up Navigation","Header",null,null]' href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup" rel="nofollow" role="menuitem">Sign up</a></li>
+</ol>
+</nav>
+</div>
+</header>
+<script>
+		StackExchange.ready(function () { StackExchange.topbar.init(); });
+		StackExchange.scrollPadding.setPaddingTop(50, 10); 
+	</script>
+<div class="bg-black-025 bs-sm bt bc-black-100 ps-fixed l0 r0 b0 z-nav js-dismissable-hero" data-campaign-name="stk">
+<div class="d-flex wmx12 mx-auto px8 py12 jc-space-between ai-center lg:pl24 lg:pr24 md:fd-column sm:fd-row sm:ai-center">
+<div class="flex--item fs-body2 fl1 mr16 md:mr0 md:mb12 sm:mb0 sm:mr16">
+<p class="mb0 m"><strong><b>Joi</b>n <b>Sta</b>ck <b>Overf</b>low </strong> <b>t</b>o <b>fi</b>nd <b>t</b>he <b>be</b>st <b>ans</b>wer <b>t</b>o <b>yo</b>ur <b>tech</b>nical <b>ques</b>tion, <b>he</b>lp <b>oth</b>ers <b>ans</b>wer <b>the</b>irs. </p>
+</div>
+<div class="d-flex gs8 gsx ai-center sm:jc-space-between" id="openid-buttons">
+<a class="flex--item s-btn s-btn__filled ws-nowrap" data-ga='["sign up","Sign Up Navigation","Question Hero",null,null]' href="/users/signup?ssrc=hero&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup" rel="nofollow">
+<span class="sm:d-none m"><b>Sig</b>n <b>u</b>p <b>wi</b>th <b>em</b>ail </span>
+<span class="d-none sm:d-inline m"><b>Sig</b>n <b>u</b>p </span>
+</a>
+<button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__google ta-center js-major-provider sm:d-none" data-ga='["sign up","Sign Up Started - Google","Question Hero",null,null]' data-oauthserver="https://accounts.google.com/o/oauth2/auth" data-oauthversion="2.0" data-provider="google">
+<svg aria-hidden="true" class="native svg-icon iconGoogle" height="18" viewbox="0 0 18 18" width="18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z" fill="#4285F4"></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z" fill="#34A853"></path><path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z" fill="#FBBC05"></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z" fill="#EA4335"></path></svg>
+                    Sign up with Google
+                </button>
+<button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__github ta-center js-major-provider sm:d-none" data-ga='["sign up","Sign Up Started - GitHub","Question Hero",null,null]' data-oauthserver="https://github.com/login/oauth/authorize" data-oauthversion="2.0" data-provider="github">
+<svg aria-hidden="true" class="svg-icon iconGitHub" height="18" viewbox="0 0 18 18" width="18"><path d="M9 1a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 9 1Z" fill="#010101"></path></svg>
+                    Sign up with GitHub
+                </button>
+<button class="flex--item ws-nowrap s-btn s-btn__icon s-btn__facebook ta-center js-major-provider sm:d-none" data-ga='["sign up","Sign Up Started - Facebook","Question Hero",null,null]' data-oauthserver="https://www.facebook.com/v2.0/dialog/oauth" data-oauthversion="2.0" data-provider="facebook">
+<svg aria-hidden="true" class="svg-icon iconFacebook" height="18" viewbox="0 0 18 18" width="18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill="#4167B2"></path></svg>
+                    Sign up with Facebook
+                </button>
+<button class="flex--item s-btn s-btn__muted s-btn__icon px8 js-dismiss" title="Dismiss"><svg aria-hidden="true" class="svg-icon iconClear" height="18" viewbox="0 0 18 18" width="18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg></button>
+</div>
+<form action="/users/signup?ssrc=hero&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup" id="login-form" method="POST">
+<input name="fkey" type="hidden" value="0bbaf3e5a2c7c822ad08d629ab4157766f809a1270358c40cdc93e0d87203291"/>
+<input name="ssrc" type="hidden" value="">
+<input id="oauth_version" name="oauth_version" type="hidden"/>
+<input id="oauth_server" name="oauth_server" type="hidden"/>
+<div id="se-login-fields">
+<input name="legalLinksShown" type="hidden" value="0"/>
+</div>
+</input></form>
+<script>
+            StackExchange.ready(function () {
+                StackExchange.InlineAuth.init();
+            })
+        </script>
+</div>
+</div>
+<script>
+    StackExchange.ready(function () {
+        StackExchange.Hero.init("stk", "a");
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;
+        }
+
+        $('.js-cta-button').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+
+        // TODO: we should review the class names and whatnot in use here. Older heroes use id selectors, the newer
+        // sticky question hero on SO has a .js-dismiss class instead, but it's apparently not used anywhere... 
+        // It's not great. Ideally we'd have a set of classes in the partials above that would correspond to 
+        // the behaviours we want here in a more clear way. 
+
+        // sticky question-page hero at the bottom of the page on SO
+        $('.js-dismiss').on('click', function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close", location: location }, true);
+            });
+            StackExchange.Hero.dismiss();
+            $(".js-dismissable-hero").fadeOut("fast");
+        });
+    });
+</script>
+<div class="container">
+<div class="left-sidebar js-pinned-left-sidebar ps-relative" data-is-here-when="md lg" id="left-sidebar">
+<div class="left-sidebar--sticky-container js-sticky-leftnav">
+<nav role="navigation">
+<ol class="nav-links">
+<li aria-current="false" class="ps-relative">
+<a aria-controls="" aria-current="false" class="pl8 js-gps-track nav-links--link" data-controller="" data-gps-track="top_nav.click({is_current: false, location:2, destination:8})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="/">
+<div class="d-flex ai-center">
+<div class="flex--item truncate">
+                    Home
+                </div>
+</div>
+</a>
+</li>
+<li>
+<ol class="nav-links">
+<li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+<li aria-current="true" class="ps-relative youarehere">
+<a aria-controls="" aria-current="false" class="pl8 js-gps-track nav-links--link -link__with-icon" data-controller="" data-gps-track="top_nav.click({is_current: true, location:2, destination:1})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="/questions" id="nav-questions">
+<svg aria-hidden="true" class="svg-icon iconGlobe" height="18" viewbox="0 0 18 18" width="18"><path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8ZM8 15.32a6.46 6.46 0 0 1-4.3-2.74 6.46 6.46 0 0 1-.93-5.01L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52Zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.45 6.45 0 0 1 3.83 4.51 6.45 6.45 0 0 1-1.51 5.73v.01Z"></path></svg> <span class="-link--channel-name m"><b>Quest</b>ions </span>
+</a>
+</li>
+<li aria-current="false" class="ps-relative">
+<a aria-controls="" aria-current="false" class="js-gps-track nav-links--link" data-controller="" data-gps-track="top_nav.click({is_current: false, location:2, destination:2})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="/tags" id="nav-tags">
+<div class="d-flex ai-center">
+<div class="flex--item truncate">
+                    Tags
+                </div>
+</div>
+</a>
+</li>
+<li aria-current="false" class="ps-relative">
+<a aria-controls="" aria-current="false" class="js-gps-track nav-links--link" data-controller="" data-gps-track="top_nav.click({is_current: false, location:2, destination:3})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="/users" id="nav-users">
+<div class="d-flex ai-center">
+<div class="flex--item truncate">
+                    Users
+                </div>
+</div>
+</a>
+</li>
+<li aria-current="false" class="ps-relative">
+<a aria-controls="" aria-current="false" class="js-gps-track nav-links--link" data-controller="" data-gps-track="top_nav.click({is_current: false, location:2, destination:12})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="https://stackoverflow.com/jobs/companies?so_medium=stackoverflow&amp;so_source=SiteNav" id="nav-companies">
+<div class="d-flex ai-center">
+<div class="flex--item truncate">
+                    Companies
+                </div>
+</div>
+</a>
+</li>
+<li class="ml8 mt16">
+<div class="d-flex jc-space-between fl-grow1">
+<div class="flex--item tt-uppercase tt-uppercase fs-fine fc-light">Collectives</div>
+<div class="flex--item fs-fine fc-light">
+<a aria-controls="popover-discover-collectives" class="s-link p12 fc-black-500 h:fc-black-800 js-gps-track js-collectives-navcta-toggle" data-action="s-popover#toggle" data-controller="s-popover" data-gps-track="top_nav.click({is_current:false, location:2, destination:17})" data-s-popover-placement="top" data-s-popover-toggle-class="is-selected" href="javascript:void(0)" role="button">
+<svg aria-hidden="true" class="svg-icon iconInfoSm" height="14" viewbox="0 0 14 14" width="14"><path d="M7 1a6 6 0 1 1 0 12A6 6 0 0 1 7 1Zm1 10V6H6v5h2Zm0-6V3H6v2h2Z"></path></svg>
+</a>
+</div>
+</div>
+</li>
+<li aria-current="false" class="ps-relative">
+<a aria-controls="" aria-current="false" class="pl8 ai-center js-collectives-navcta-toggle js-gps-track nav-links--link -link__with-icon" data-controller="" data-gps-track="top_nav.click({is_current: false, location:2, destination:18})" data-s-popover-auto-show="true" data-s-popover-hide-on-outside-click="never" data-s-popover-placement="right" href="/collectives" id="nav-collective-discover">
+<svg aria-hidden="true" class="mt-auto fc-orange-400 svg-icon iconStarVerified" height="18" viewbox="0 0 18 18" width="18"><path d="M9.86.89a1.14 1.14 0 0 0-1.72 0l-.5.58c-.3.35-.79.48-1.23.33l-.72-.25a1.14 1.14 0 0 0-1.49.85l-.14.76c-.1.45-.45.8-.9.9l-.76.14c-.67.14-1.08.83-.85 1.49l.25.72c.15.44.02.92-.33 1.23l-.58.5a1.14 1.14 0 0 0 0 1.72l.58.5c.35.3.48.79.33 1.23l-.25.72c-.23.66.18 1.35.85 1.49l.76.14c.45.1.8.45.9.9l.14.76c.14.67.83 1.08 1.49.85l.72-.25c.44-.15.92-.02 1.23.33l.5.58c.46.52 1.26.52 1.72 0l.5-.58c.3-.35.79-.48 1.23-.33l.72.25c.66.23 1.35-.18 1.49-.85l.14-.76c.1-.45.45-.8.9-.9l.76-.14c.67-.14 1.08-.83.85-1.49l-.25-.72c-.15-.44-.02-.92.33-1.23l.58-.5c.52-.46.52-1.26 0-1.72l-.58-.5c-.35-.3-.48-.79-.33-1.23l.25-.72a1.14 1.14 0 0 0-.85-1.49l-.76-.14c-.45-.1-.8-.45-.9-.9l-.14-.76a1.14 1.14 0 0 0-1.49-.85l-.72.25c-.44.15-.92.02-1.23-.33l-.5-.58Zm-.49 2.67L10.6 6.6c.05.15.19.24.34.25l3.26.22c.36.03.5.48.23.71l-2.5 2.1a.4.4 0 0 0-.14.4l.8 3.16a.4.4 0 0 1-.6.44L9.2 12.13a.4.4 0 0 0-.42 0l-2.77 1.74a.4.4 0 0 1-.6-.44l.8-3.16a.4.4 0 0 0-.13-.4l-2.5-2.1a.4.4 0 0 1 .22-.7l3.26-.23a.4.4 0 0 0 .34-.25l1.22-3.03a.4.4 0 0 1 .74 0Z"></path></svg> <span class="-link--channel-name m"><b>Expl</b>ore <b>Collec</b>tives </span>
+</a>
+</li>
+</ol>
+</li>
+<li class="js-freemium-cta ps-relative">
+<div class="fs-fine tt-uppercase ml8 mt16 mb8 fc-light">Teams</div>
+<div class="bt bl bb bc-black-075 p12 pb6 fc-black-600 blr-sm overflow-hidden">
+<strong class="fc-black-750 mb6">Stack Overflow for Teams</strong>
+        – Start collaborating and sharing organizational knowledge.
+        
+        <img alt="" class="wmx100 mx-auto my8 h-auto d-block" height="114" src="https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e" width="139"/>
+<a class="w100 s-btn s-btn__primary s-btn__xs bg-orange-400 js-gps-track" data-ga='["teams left navigation - anonymous","left nav free cta","stackoverflow.com/teams/create/free",null,null]' data-gps-track="teams.create.left-sidenav.click({ Action: 6 })" href="https://try.stackoverflow.co/why-teams/?utm_source=so-owned&amp;utm_medium=side-bar&amp;utm_campaign=campaign-38&amp;utm_content=cta">Create a free Team</a>
+<a class="w100 s-btn s-btn__muted s-btn__xs js-gps-track" data-ga='["teams left navigation - anonymous","left nav free cta","stackoverflow.com/teams",null,null]' data-gps-track="teams.create.left-sidenav.click({ Action: 5 })" href="https://stackoverflow.co/teams/">Why Teams?</a>
+</div>
+</li>
+<li class="d-flex ai-center jc-space-between ml8 mt24 mb4 js-create-team-cta d-none">
+<div class="flex--item tt-uppercase fs-fine fc-light">Teams</div>
+<div class="flex--item">
+<a aria-controls="popover-teams-create-cta" class="s-link p12 fc-black-500 h:fc-black-800 js-gps-track" data-action="s-popover#toggle" data-controller="s-popover" data-ga='["teams left navigation - anonymous","left nav show teams info",null,null,null]' data-gps-track="teams.create.left-sidenav.click({ Action: ShowInfo })" data-s-popover-placement="bottom-start" data-s-popover-toggle-class="is-selected" href="javascript:void(0)" role="button">
+<svg aria-hidden="true" class="svg-icon iconInfoSm" height="14" viewbox="0 0 14 14" width="14"><path d="M7 1a6 6 0 1 1 0 12A6 6 0 0 1 7 1Zm1 10V6H6v5h2Zm0-6V3H6v2h2Z"></path></svg>
+</a>
+</div>
+</li>
+<li class="ps-relative js-create-team-cta d-none">
+<a class="pl8 js-gps-track nav-links--link" data-ga='["teams left navigation - anonymous","left nav team click","stackoverflow.com/teams/create/free",null,null]' data-gps-track="teams.create.left-sidenav.click({ Action: FreemiumTeamsCreateClick })" href="https://stackoverflowteams.com/teams/create/free/?utm_source=so-owned&amp;utm_medium=side-bar&amp;utm_campaign=campaign-38&amp;utm_content=cta" title="Stack Overflow for Teams is a private, secure spot for your organization's questions and answers.">
+<div class="d-flex ai-center">
+<div class="flex--item s-avatar va-middle bg-orange-400">
+<div class="s-avatar--letter mtn1">
+<svg aria-hidden="true" class="svg-icon iconBriefcaseSm" height="14" viewbox="0 0 14 14" width="14"><path d="M4 3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 2 10.5v-5C2 4.67 2.67 4 3.5 4H4V3Zm5 1V3H5v1h4Z"></path></svg>
+</div>
+<svg aria-hidden="true" class="native s-avatar--badge svg-icon iconShieldXSm" height="10" viewbox="0 0 9 10" width="9"><path d="M0 1.84 4.5 0 9 1.84v3.17C9 7.53 6.3 10 4.5 10 2.7 10 0 7.53 0 5.01V1.84Z" fill="var(--white)"></path><path d="M1 2.5 4.5 1 8 2.5v2.51C8 7.34 5.34 9 4.5 9 3.65 9 1 7.34 1 5.01V2.5Zm2.98 3.02L3.2 7h2.6l-.78-1.48a.4.4 0 0 1 .15-.38c.34-.24.73-.7.73-1.14 0-.71-.5-1.23-1.41-1.23-.92 0-1.39.52-1.39 1.23 0 .44.4.9.73 1.14.12.08.18.23.15.38Z" fill="var(--black-500)"></path></svg>
+</div>
+<div class="flex--item pl6">
+                    Create free Team
+                </div>
+</div>
+</a>
+</li>
+</ol>
+</nav>
+</div>
+<div class="s-popover ws2" id="popover-discover-collectives" role="menu">
+<div class="s-popover--arrow"></div>
+<div>
+<svg aria-hidden="true" class="fc-orange-500 float-right ml24 svg-spot spotCollective" height="48" viewbox="0 0 48 48" width="48"><path d="M25.5 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM14 18.25c0-.69.56-1.25 1.25-1.25h22.5c.69 0 1.25.56 1.25 1.25V37.5a1 1 0 0 1-1.6.8l-4.07-3.05a1.25 1.25 0 0 0-.75-.25H15.25c-.69 0-1.25-.56-1.25-1.25v-15.5ZM7 24.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM25.5 48a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM48 24.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" opacity=".2"></path><path d="M21 3.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0ZM24.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM0 23.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0ZM3.5 22a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM21 44.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0Zm3.5-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm20-23a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM43 23.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm-23.23-3.14a1 1 0 0 1-.13 1.4l-2.08 1.74 2.08 1.73a1 1 0 1 1-1.28 1.54l-2.42-2.02a1.63 1.63 0 0 1 0-2.5l2.42-2.02a1 1 0 0 1 1.4.13Zm7.59 1.41a1 1 0 1 1 1.28-1.54l2.42 2.02c.78.65.78 1.85 0 2.5l-2.42 2.02a1 1 0 1 1-1.28-1.54l2.08-1.73-2.08-1.73ZM24.12 18a1 1 0 0 1 .87 1.12l-1 8a1 1 0 1 1-1.98-.24l1-8a1 1 0 0 1 1.11-.87Zm-11.87-5C11.01 13 10 14 10 15.25v15.5c0 1.24 1 2.25 2.25 2.25h17.33c.06 0 .11.02.15.05l4.07 3.05a2 2 0 0 0 3.2-1.6V15.25c0-1.24-1-2.25-2.25-2.25h-22.5ZM12 15.25c0-.14.11-.25.25-.25h22.5c.14 0 .25.11.25.25V34.5l-4.07-3.05a2.2 2.2 0 0 0-1.35-.45H12.25a.25.25 0 0 1-.25-.25v-15.5Zm7.24-10.68a1 1 0 1 0-.48-1.94A22.04 22.04 0 0 0 2.91 17.7a1 1 0 1 0 1.92.58 20.04 20.04 0 0 1 14.4-13.72Zm11.05-1.66a1 1 0 0 0-.58 1.92c6.45 1.92 11.54 7 13.46 13.46a1 1 0 1 0 1.92-.58 22.05 22.05 0 0 0-14.8-14.8ZM4.57 28.76a1 1 0 0 0-1.94.48 22.03 22.03 0 0 0 16.13 16.13 1 1 0 1 0 .48-1.94A20.03 20.03 0 0 1 4.57 28.76Zm40.8.48a1 1 0 1 0-1.94-.48 20.04 20.04 0 0 1-13.72 14.41 1 1 0 0 0 .58 1.92 22.04 22.04 0 0 0 15.08-15.85Z"></path></svg>
+<h5 class="pt4 fw-bold m"><b>Collect</b>ives™ <b>o</b>n <b>Sta</b>ck <b>Overf</b>low </h5>
+<p class="my16 fs-caption fc-medium m"><b>Fin</b>d <b>centra</b>lized, <b>tru</b>sted <b>con</b>tent <b>a</b>nd <b>colla</b>borate <b>aro</b>und <b>t</b>he <b>techno</b>logies <b>y</b>ou <b>u</b>se <b>mo</b>st. </p>
+<a class="js-gps-track s-btn s-btn__primary s-btn__xs" data-gps-track="top_nav.click({is_current:false, location:2, destination:18})" href="/collectives">
+                    Learn more about Collectives
+                </a>
+</div>
+</div>
+<div aria-hidden="true" class="s-popover ws2" id="popover-teams-create-cta" role="menu">
+<div class="s-popover--arrow"></div>
+<div class="ps-relative overflow-hidden">
+<p class="mb2 m"><strong><b>Tea</b>ms </strong></p>
+<p class="mb12 fs-caption fc-black-400 m">Q&amp;A <b>f</b>or <b>wo</b>rk </p>
+<p class="mb12 fs-caption fc-medium m"><b>Conn</b>ect <b>a</b>nd <b>sh</b>are <b>know</b>ledge <b>wit</b>hin a <b>sin</b>gle <b>loca</b>tion <b>th</b>at <b>i</b>s <b>struc</b>tured <b>a</b>nd <b>ea</b>sy <b>t</b>o <b>sea</b>rch. </p>
+<a class="js-gps-track s-btn s-btn__primary s-btn__xs" data-ga='["teams left navigation - anonymous","left nav cta","stackoverflow.com/teams",null,null]' data-gps-track="teams.create.left-sidenav.click({ Action: CtaClick })" href="https://stackoverflow.co/teams/">
+                    Learn more about Teams
+                </a>
+</div>
+<div class="ps-absolute t8 r8">
+<svg aria-hidden="true" class="fc-orange-500 svg-spot spotPeople" height="48" viewbox="0 0 48 48" width="48"><path d="M13.5 28a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM7 30a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v5h11v-5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2H33v5a1 1 0 0 1-1 1H20a1 1 0 0 1-1-1v-5H8a1 1 0 0 1-1-1V30Zm25-6.5a4.5 4.5 0 1 0 9 0 4.5 4.5 0 0 0-9 0ZM24.5 34a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z" opacity=".2"></path><path d="M16.4 26.08A6 6 0 1 0 7.53 26C5.64 26.06 4 27.52 4 29.45V40a1 1 0 0 0 1 1h9a1 1 0 1 0 0-2h-4v-7a1 1 0 1 0-2 0v7H6v-9.55c0-.73.67-1.45 1.64-1.45H16a1 1 0 0 0 .4-1.92ZM12 18a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm16.47 14a6 6 0 1 0-8.94 0A3.6 3.6 0 0 0 16 35.5V46a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V35.5c0-1.94-1.64-3.42-3.53-3.5ZM20 28a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm-.3 6h8.6c1 0 1.7.75 1.7 1.5V45h-2v-7a1 1 0 1 0-2 0v7h-4v-7a1 1 0 1 0-2 0v7h-2v-9.5c0-.75.7-1.5 1.7-1.5ZM42 22c0 1.54-.58 2.94-1.53 4A3.5 3.5 0 0 1 44 29.45V40a1 1 0 0 1-1 1h-9a1 1 0 1 1 0-2h4v-7a1 1 0 1 1 2 0v7h2v-9.55A1.5 1.5 0 0 0 40.48 28H32a1 1 0 0 1-.4-1.92A6 6 0 1 1 42 22Zm-2 0a4 4 0 1 0-8 0 4 4 0 0 0 8 0Z"></path><g opacity=".35"><path d="M17 10a1 1 0 011-1h12a1 1 0 110 2H18a1 1 0 01-1-1Zm1-5a1 1 0 100 2h12a1 1 0 100-2H18ZM14 1a1 1 0 00-1 1v12a1 1 0 001 1h5.09l4.2 4.2a1 1 0 001.46-.04l3.7-4.16H34a1 1 0 001-1V2a1 1 0 00-1-1H14Zm1 12V3h18v10h-5a1 1 0 00-.75.34l-3.3 3.7-3.74-3.75a1 1 0 00-.71-.29H15Z"></path></g></svg>
+</div>
+</div>
+</div>
+<div class="snippet-hidden" id="content">
+<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<link href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" itemprop="image"/>
+<div class="inner-content clearfix">
+<div class="d-flex sm:fd-column" id="question-header">
+<h1 class="fs-headline1 ow-break-word mb8 flex--item fl1 m" itemprop="name"><a class="question-hyperlink" href="/questions/25327693/difference-between-string-and-text-beautifulsoup"><b>Differ</b>ence <b>bet</b>ween .<b>str</b>ing <b>a</b>nd .<b>te</b>xt <b>Beautif</b>ulSoup </a></h1>
+<div class="ml12 aside-cta flex--item print:d-none sm:ml0 sm:mb12 sm:order-first sm:as-end">
+<a class="ws-nowrap s-btn s-btn__primary" href="/questions/ask">
+        Ask Question
+    </a>
+</div>
+</div>
+<div class="d-flex fw-wrap pb8 mb16 bb bc-black-075">
+<div class="flex--item ws-nowrap mr16 mb8" title="2014-08-15 13:54:05Z">
+<span class="fc-light mr2 m"><b>Ask</b>ed </span>
+<time datetime="2014-08-15T13:54:05" itemprop="dateCreated">8 years, 11 months ago</time>
+</div>
+<div class="flex--item ws-nowrap mr16 mb8">
+<span class="fc-light mr2 m"><b>Modif</b>ied </span>
+<a class="s-link s-link__inherit" href="?lastactivity" title="2022-10-07 20:33:54Z">9 months ago</a>
+</div>
+<div class="flex--item ws-nowrap mb8" title="Viewed 32,759 times">
+<span class="fc-light mr2 m"><b>View</b>ed </span>
+                        33k times
+                    </div>
+</div>
+<div aria-label="question and answers" id="mainbar" role="main">
+<div class="question js-question" data-position-on-page="0" data-questionid="25327693" data-score="45" id="question">
+<style>
+</style>
+<div class="js-zone-container zone-container-main">
+<div class="everyonelovesstackoverflow everyoneloves__top-leaderboard everyoneloves__leaderboard" id="dfp-tlb"></div>
+<div class="js-report-ad-button-container" style="width: 728px"></div>
+</div>
+<div class="post-layout">
+<div class="votecell post-layout--left">
+<div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="25327693">
+<button aria-label="Up vote" aria-pressed="false" class="js-vote-up-btn flex--item s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This question shows research effort; it is useful and clear">
+<svg aria-hidden="true" class="svg-icon iconArrowUp" height="18" viewbox="0 0 18 18" width="18"><path d="M1 12h16L9 4l-8 8Z"></path></svg>
+</button>
+<div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4" data-value="45" itemprop="upvoteCount">
+            45
+        </div>
+<button aria-label="Down vote" aria-pressed="false" class="js-vote-down-btn flex--item mb8 s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This question does not show any research effort; it is unclear or not useful">
+<svg aria-hidden="true" class="svg-icon iconArrowDown" height="18" viewbox="0 0 18 18" width="18"><path d="M1 6h16l-8 8-8-8Z"></path></svg>
+</button>
+<button aria-controls="" aria-pressed="false" class="js-saves-btn s-btn s-btn__unset c-pointer py4" data-controller="s-tooltip" data-post-id="25327693" data-post-type-id="1" data-s-popover-auto-show="false" data-s-popover-placement="" data-s-tooltip-placement="right" data-user-privilege-for-post-click="0" id="saves-btn-25327693" title="Save this question." type="button">
+<svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" height="18" viewbox="0 0 18 18" width="18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+<svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" height="18" viewbox="0 0 18 18" width="18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button>
+<a aria-label="Timeline" class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" data-controller="s-tooltip" data-ks-title="timeline" data-s-tooltip-placement="right" data-shortcut="T" href="/posts/25327693/timeline" title="Show activity on this post."><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" height="18" viewbox="0 0 19 18" width="19"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+</div>
+<div class="postcell post-layout--right">
+<div class="s-prose js-post-body" itemprop="text">
+<p class="m">I <b>not</b>iced <b>some</b>thing <b>o</b>dd <b>ab</b>out <b>wh</b>en <b>wor</b>king <b>wi</b>th <b>Beautif</b>ulSoup <b>a</b>nd <b>coul</b>dn't <b>fi</b>nd <b>a</b>ny <b>docume</b>ntation <b>t</b>o <b>sup</b>port <b>th</b>is <b>s</b>o I <b>wan</b>ted <b>t</b>o <b>a</b>sk <b>ov</b>er <b>he</b>re. </p>
+<p class="m"><b>Sa</b>y <b>w</b>e <b>ha</b>ve a <b>ta</b>gs <b>li</b>ke <b>th</b>ese <b>th</b>at <b>w</b>e <b>ha</b>ve <b>par</b>sed <b>wi</b>th BS: </p>
+<pre><code>&lt;td&gt;Some Table Data&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+</code></pre>
+<p class="m"><b>Th</b>e  <a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/#navigablestring"><b>offi</b>cial <b>docum</b>ented </a> <b>w</b>ay <b>t</b>o <b>ext</b>ract <b>t</b>he <b>da</b>ta <b>i</b>s  <code><b>soup.s</b>tring </code>. <b>Howe</b>ver <b>th</b>is <b>extr</b>acted a <b>NoneTy</b>pe <b>f</b>or <b>t</b>he <b>sec</b>ond  <code>&lt;<b>td</b>&gt; </code> <b>ta</b>g. <b>So</b> I <b>tr</b>ied  <code><b>soup</b>.text </code> (<b>beca</b>use <b>w</b>hy <b>no</b>t?) <b>a</b>nd <b>i</b>t <b>extr</b>acted <b>a</b>n <b>em</b>pty <b>str</b>ing <b>exa</b>ctly <b>a</b>s I <b>wan</b>ted. </p>
+<p class="m"><b>Howe</b>ver I <b>coul</b>dn't <b>fi</b>nd <b>a</b>ny <b>refe</b>rence <b>t</b>o <b>th</b>is <b>i</b>n <b>t</b>he <b>docume</b>ntation <b>a</b>nd <b>a</b>m <b>wor</b>ried <b>th</b>at <b>some</b>thing <b>i</b>s a <b>mi</b>ss. <b>Ca</b>n <b>any</b>one <b>l</b>et <b>m</b>e <b>kn</b>ow <b>i</b>f <b>th</b>is <b>i</b>s <b>accep</b>table <b>t</b>o <b>u</b>se <b>o</b>r <b>wi</b>ll <b>i</b>t <b>ca</b>use <b>prob</b>lems <b>lat</b>er? </p>
+<p class="m">BTW I <b>a</b>m <b>scra</b>ping <b>ta</b>ble <b>da</b>ta <b>fr</b>om a <b>w</b>eb <b>pa</b>ge <b>a</b>nd <b>me</b>an <b>t</b>o <b>cre</b>ate <b>CSVs</b> <b>fr</b>om <b>t</b>he <b>da</b>ta <b>s</b>o I <b>d</b>o <b>actu</b>ally <b>ne</b>ed <b>em</b>pty <b>str</b>ings <b>rat</b>her <b>th</b>an <b>NoneTyp</b>es. </p>
+</div>
+<div class="mt24 mb12">
+<div class="post-taglist d-flex gs4 gsy fd-column">
+<div class="d-flex ps-relative fw-wrap">
+<ul class="ml0 list-ls-none js-post-tag-list-wrapper d-inline"><li class="d-inline mr4 js-post-tag-list-item"><a aria-label="show questions tagged 'python'" aria-labelledby="tag-python-tooltip-container" class="post-tag" href="/questions/tagged/python" rel="tag" title="show questions tagged 'python'">python</a></li><li class="d-inline mr4 js-post-tag-list-item"><a aria-label="show questions tagged 'beautifulsoup'" aria-labelledby="tag-beautifulsoup-tooltip-container" class="post-tag" href="/questions/tagged/beautifulsoup" rel="tag" title="show questions tagged 'beautifulsoup'">beautifulsoup</a></li></ul>
+</div>
+</div>
+</div>
+<div class="mb0">
+<div class="mt16 d-flex gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
+<div class="flex--item mr16 fl1 w96">
+<div class="js-post-menu pt2" data-post-id="25327693" data-post-type-id="1">
+<div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+<div class="flex--item">
+<a class="js-share-link js-gps-track" data-controller="se-share-sheet" data-gps-track="post.click({ item: 2, priv: 0, post_type: 1 })" data-s-popover-placement="bottom-start" data-se-share-sheet-license-name="CC BY-SA 3.0" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-location="1" data-se-share-sheet-post-type="question" data-se-share-sheet-social="facebook twitter devto" data-se-share-sheet-subtitle="" data-se-share-sheet-title="Share a link to this question" href="/q/25327693" itemprop="url" rel="nofollow" title="Short permalink to this question">Share</a>
+</div>
+<div class="flex--item">
+<button aria-controls="" class="s-btn s-btn__link js-follow-post js-follow-question js-gps-track" data-controller="s-tooltip " data-gps-track="post.click({ item: 14, priv: 0, post_type: 1 })" data-s-popover-placement="bottom" data-s-tooltip-placement="bottom" id="btnFollowPost-25327693" title="Follow this question to receive notifications" type="button">
+                    Follow
+                </button>
+</div>
+</div>
+<div class="js-menu-popup-container"></div>
+</div>
+</div>
+<div class="post-signature owner flex--item">
+<div class="user-info user-hover">
+<div class="user-action-time">
+        asked <span class="relativetime m" title="2014-08-15 13:54:05Z"><b>Au</b>g 15, 2014 <b>a</b>t 13:54 </span>
+</div>
+<div class="user-gravatar32">
+<a href="/users/620431/mez-pahlan"><div class="gravatar-wrapper-32"><img alt="mez.pahlan's user avatar" class="bar-sm" height="32" src="https://i.stack.imgur.com/y595u.jpg?s=64&amp;g=1" width="32"/></div></a>
+</div>
+<div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a href="/users/620431/mez-pahlan">mez.pahlan</a><span class="d-none m" itemprop="name"><b>mez.pa</b>hlan </span>
+<div class="-flair">
+<span class="reputation-score m" dir="ltr" title="reputation score ">1,053 </span><span aria-hidden="true" class="m" title="1 gold badge"><span class="badge1 m"></span><span class="badgecount m">1 </span></span><span class="v-visible-sr m">1 <b>go</b>ld <b>ba</b>dge </span><span aria-hidden="true" class="m" title="11 silver badges"><span class="badge2 m"></span><span class="badgecount m">11 </span></span><span class="v-visible-sr m">11 <b>sil</b>ver <b>bad</b>ges </span><span aria-hidden="true" class="m" title="25 bronze badges"><span class="badge3 m"></span><span class="badgecount m">25 </span></span><span class="v-visible-sr m">25 <b>bro</b>nze <b>bad</b>ges </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="d-none m" itemprop="commentCount"></span>
+<div class="post-layout--right js-post-comments-component">
+<div class="comments js-comments-container bt bc-black-075 mt12 dno" data-min-length="15" data-post-id="25327693" id="comments-25327693">
+<ul class="comments-list js-comments-list" data-addlink-disabled="true" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-remaining-comments-count="0">
+</ul>
+</div>
+<div data-anon="true" data-rep="50" id="comments-link-25327693">
+<a class="js-add-link comments-link disabled-link" href="#" role="button" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">Add a comment</a>
+<span class="js-link-separator dno m"> |  </span>
+<a class="js-show-link comments-link dno" href="#" onclick="" role="button" title="Expand to show all comments on this post"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="js-zone-container zone-container-responsive">
+<div class="everyonelovesstackoverflow everyoneloves__inline-sidebar mx-auto" id="dfp-isb"></div>
+<div class="js-report-ad-button-container mx-auto" style="width: 300px"></div>
+</div>
+<div id="answers">
+<a name="tab-top"></a>
+<div id="answers-header">
+<div class="answers-subheader d-flex ai-center mb8">
+<div class="flex--item fl1">
+<h2 class="mb0 m" data-answercount="3">
+                                        3 Answers
+                                    <span class="m" itemprop="answerCount" style="display:none;">3 </span>
+</h2>
+</div>
+<div class="flex--item">
+<div class="d-flex g4 gsx ai-center sm:fd-column sm:ai-start">
+<div class="d-flex fd-column ai-end sm:ai-start">
+<label class="flex--item fs-caption" for="answer-sort-dropdown-select-menu">
+            Sorted by:
+        </label>
+<a class="js-sort-preference-change s-link flex--item fs-fine d-none" data-value="ScoreDesc" href="/questions/25327693/difference-between-string-and-text-beautifulsoup?answertab=scoredesc#tab-top">
+            Reset to default
+        </a>
+</div>
+<div class="flex--item s-select">
+<select id="answer-sort-dropdown-select-menu">
+<option selected="selected" value="scoredesc">
+                        Highest score (default)
+                    </option>
+<option value="trending">
+                        Trending (recent votes count more)
+                    </option>
+<option value="modifieddesc">
+                        Date modified (newest first)
+                    </option>
+<option value="createdasc">
+                        Date created (oldest first)
+                    </option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a name="25328374"></a>
+<div class="answer js-answer accepted-answer js-accepted-answer" data-answerid="25328374" data-highest-scored="1" data-parentid="25327693" data-position-on-page="1" data-question-has-accepted-highest-score="1" data-score="76" id="answer-25328374" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<div class="post-layout">
+<div class="votecell post-layout--left">
+<div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="25328374">
+<button aria-label="Up vote" aria-pressed="false" class="js-vote-up-btn flex--item s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is useful">
+<svg aria-hidden="true" class="svg-icon iconArrowUp" height="18" viewbox="0 0 18 18" width="18"><path d="M1 12h16L9 4l-8 8Z"></path></svg>
+</button>
+<div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4" data-value="76" itemprop="upvoteCount">
+            76
+        </div>
+<button aria-label="Down vote" aria-pressed="false" class="js-vote-down-btn flex--item mb8 s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is not useful">
+<svg aria-hidden="true" class="svg-icon iconArrowDown" height="18" viewbox="0 0 18 18" width="18"><path d="M1 6h16l-8 8-8-8Z"></path></svg>
+</button>
+<button aria-controls="" aria-pressed="false" class="js-saves-btn s-btn s-btn__unset c-pointer py4" data-controller="s-tooltip" data-post-id="25328374" data-post-type-id="2" data-s-popover-auto-show="false" data-s-popover-placement="" data-s-tooltip-placement="right" data-user-privilege-for-post-click="0" id="saves-btn-25328374" title="Save this answer." type="button">
+<svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" height="18" viewbox="0 0 18 18" width="18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+<svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" height="18" viewbox="0 0 18 18" width="18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button>
+<div aria-label="Accepted" class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8" data-s-tooltip-placement="right" role="note" tabindex="0" title="Loading when this answer was accepted…">
+<div class="ta-center">
+<svg aria-hidden="true" class="svg-icon iconCheckmarkLg" height="36" viewbox="0 0 36 36" width="36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+</div>
+</div>
+<a aria-label="Timeline" class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" data-controller="s-tooltip" data-ks-title="timeline" data-s-tooltip-placement="right" data-shortcut="T" href="/posts/25328374/timeline" title="Show activity on this post."><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" height="18" viewbox="0 0 19 18" width="19"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+</div>
+<div class="answercell post-layout--right">
+<div class="s-prose js-post-body" itemprop="text">
+<p class="m"><code>.<b>str</b>ing </code> <b>o</b>n a  <code><b>Ta</b>g </code> <b>ty</b>pe <b>obj</b>ect <b>ret</b>urns a  <code><b>Navigabl</b>eString </code> <b>ty</b>pe <b>obj</b>ect. <b>On</b> <b>t</b>he <b>ot</b>her <b>ha</b>nd,  <code>.<b>te</b>xt </code> <b>ge</b>ts <b>a</b>ll <b>t</b>he <b>ch</b>ild <b>str</b>ings <b>a</b>nd <b>ret</b>urn <b>concat</b>enated <b>us</b>ing <b>t</b>he <b>gi</b>ven <b>separ</b>ator. <b>Retu</b>rn <b>ty</b>pe <b>o</b>f .<b>te</b>xt <b>i</b>s  <code><b>uni</b>code </code> <b>obj</b>ect. </p>
+<p class="m"><b>Fro</b>m <b>t</b>he  <a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/#navigablestring" rel="nofollow noreferrer"><b>docume</b>ntation </a>, A  <code><b>Navigabl</b>eString </code> <b>i</b>s <b>ju</b>st <b>li</b>ke a <b>Pyth</b>on  <code><b>Unic</b>ode </code> <b>str</b>ing, <b>exc</b>ept <b>th</b>at <b>i</b>t <b>al</b>so <b>supp</b>orts <b>so</b>me <b>o</b>f <b>t</b>he <b>feat</b>ures <b>desc</b>ribed <b>i</b>n  <a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/#navigating-the-tree" rel="nofollow noreferrer"><b>Naviga</b>ting <b>t</b>he <b>tr</b>ee </a> <b>a</b>nd  <a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/#searching-the-tree" rel="nofollow noreferrer"><b>Searc</b>hing <b>t</b>he <b>tr</b>ee </a>. </p>
+<p class="m"><b>Fro</b>m <b>t</b>he  <a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/#string" rel="nofollow noreferrer"><b>docume</b>ntation </a> <b>o</b>n  <code>.<b>str</b>ing </code>, <b>w</b>e <b>c</b>an <b>s</b>ee <b>th</b>at, <b>If</b> <b>t</b>he <b>ht</b>ml <b>i</b>s <b>li</b>ke <b>th</b>is, </p>
+<pre><code>&lt;td&gt;Some Table Data&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+</code></pre>
+<p class="m"><b>The</b>n,  <code>.<b>str</b>ing </code> <b>o</b>n <b>t</b>he <b>sec</b>ond <b>t</b>d <b>wi</b>ll <b>ret</b>urn  <code><b>Non</b>e </code>.
+<b>But</b>  <code>.<b>te</b>xt </code> <b>wi</b>ll <b>ret</b>urn <b>a</b>n <b>em</b>pty <b>str</b>ing, <b>wh</b>ich <b>i</b>s a  <code><b>uni</b>code </code> <b>ty</b>pe <b>obj</b>ect. </p>
+<p class="m"><b>Fo</b>r <b>gre</b>ater <b>conven</b>ience, </p>
+<p class="m"><code><b>str</b>ing </code></p>
+<ul>
+<li>Convenience property of a <code>tag</code> to get the single string within this tag.</li>
+<li>If the <code>tag</code> has a single string child then the return value is that string.</li>
+<li>If the <code>tag</code> has no children or more than one child then the return value is <code>None</code></li>
+<li>If this <code>tag</code> has one child tag then the return value is the 'string' attribute of the child tag, recursively.</li>
+</ul>
+<p class="m"><b>An</b>d  <code><b>te</b>xt </code></p>
+<ul>
+<li>Get all the child strings and return concatenated using the given separator.</li>
+</ul>
+<p class="m"><b>If</b> <b>t</b>he  <code><b>ht</b>ml </code> <b>i</b>s <b>li</b>ke <b>th</b>is: </p>
+<pre><code>&lt;td&gt;some text&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;more text&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;even &lt;p&gt;more text&lt;/p&gt;&lt;/td&gt;
+</code></pre>
+<p class="m"><code>.<b>str</b>ing </code> <b>o</b>n <b>t</b>he <b>fo</b>ur  <code><b>t</b>d </code> <b>wi</b>ll <b>ret</b>urn, </p>
+<pre><code>some text
+None
+more text
+None
+</code></pre>
+<p class="m"><code>.<b>te</b>xt </code> <b>wi</b>ll <b>gi</b>ve <b>res</b>ult <b>li</b>ke <b>th</b>is, </p>
+<pre><code>some text
+
+more text
+even more text
+</code></pre>
+</div>
+<div class="mt24">
+<div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+<time datetime="2014-08-15T14:34:28" itemprop="dateCreated"></time>
+<div class="flex--item mr16" style="flex: 1 1 100px;">
+<div class="js-post-menu pt2" data-post-id="25328374" data-post-type-id="2">
+<div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+<div class="flex--item">
+<a class="js-share-link js-gps-track" data-controller="se-share-sheet" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-s-popover-placement="bottom-start" data-se-share-sheet-license-name="CC BY-SA 4.0" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f4.0%2f" data-se-share-sheet-location="2" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter devto" data-se-share-sheet-subtitle="" data-se-share-sheet-title="Share a link to this answer" href="/a/25328374" itemprop="url" rel="nofollow" title="Short permalink to this answer">Share</a>
+</div>
+<div class="flex--item">
+<button aria-controls="" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-controller="s-tooltip " data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-s-popover-placement="bottom" data-s-tooltip-placement="bottom" id="btnFollowPost-25328374" title="Follow this answer to receive notifications" type="button">
+                    Follow
+                </button>
+</div>
+</div>
+<div class="js-menu-popup-container"></div>
+</div>
+</div>
+<div class="post-signature flex--item fl0">
+<div class="user-info">
+<div class="user-action-time">
+<a class="js-gps-track" data-gps-track="post.click({ item: 4, priv: 0, post_type: 2 })" href="/posts/25328374/revisions" title="show all edits to this post">edited <span class="relativetime m" title="2022-10-07 20:33:54Z"><b>Oc</b>t 7, 2022 <b>a</b>t 20:33 </span></a>
+</div>
+<div class="user-gravatar32">
+<a href="/users/17976292/lwei"><div class="gravatar-wrapper-32"><img alt="lwei's user avatar" class="bar-sm" height="32" src="https://lh3.googleusercontent.com/a/AATXAJzHSME7pcWioaURU9aygAf-TiewzsVwdoZFWt4i=k-s64" width="32"/></div></a>
+</div>
+<div class="user-details">
+<a href="/users/17976292/lwei">lwei</a>
+<div class="-flair">
+<span class="reputation-score m" dir="ltr" title="reputation score ">55 </span><span aria-hidden="true" class="m" title="2 silver badges"><span class="badge2 m"></span><span class="badgecount m">2 </span></span><span class="v-visible-sr m">2 <b>sil</b>ver <b>bad</b>ges </span><span aria-hidden="true" class="m" title="6 bronze badges"><span class="badge3 m"></span><span class="badgecount m">6 </span></span><span class="v-visible-sr m">6 <b>bro</b>nze <b>bad</b>ges </span>
+</div>
+</div>
+</div>
+</div>
+<div class="post-signature flex--item fl0">
+<div class="user-info user-hover">
+<div class="user-action-time">
+        answered <span class="relativetime m" title="2014-08-15 14:34:28Z"><b>Au</b>g 15, 2014 <b>a</b>t 14:34 </span>
+</div>
+<div class="user-gravatar32">
+<a href="/users/1113211/salmanwahed"><div class="gravatar-wrapper-32"><img alt="salmanwahed's user avatar" class="bar-sm" height="32" src="https://i.stack.imgur.com/5J0hr.jpg?s=64&amp;g=1" width="32"/></div></a>
+</div>
+<div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a href="/users/1113211/salmanwahed">salmanwahed</a><span class="d-none m" itemprop="name"><b>salma</b>nwahed </span>
+<div class="-flair">
+<span class="reputation-score m" dir="ltr" title="reputation score ">9,440 </span><span aria-hidden="true" class="m" title="7 gold badges"><span class="badge1 m"></span><span class="badgecount m">7 </span></span><span class="v-visible-sr m">7 <b>go</b>ld <b>bad</b>ges </span><span aria-hidden="true" class="m" title="32 silver badges"><span class="badge2 m"></span><span class="badgecount m">32 </span></span><span class="v-visible-sr m">32 <b>sil</b>ver <b>bad</b>ges </span><span aria-hidden="true" class="m" title="55 bronze badges"><span class="badge3 m"></span><span class="badgecount m">55 </span></span><span class="v-visible-sr m">55 <b>bro</b>nze <b>bad</b>ges </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="d-none m" itemprop="commentCount">1 </span>
+<div class="post-layout--right js-post-comments-component">
+<div class="comments js-comments-container bt bc-black-075 mt12" data-min-length="15" data-post-id="25328374" id="comments-25328374">
+<ul class="comments-list js-comments-list" data-addlink-disabled="true" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-remaining-comments-count="0">
+<li class="comment js-comment" data-comment-id="123348529" data-comment-owner-id="13944524" data-comment-score="1" id="comment-123348529">
+<div class="js-comment-actions comment-actions">
+<div class="comment-score js-comment-score js-comment-edit-hide">
+<span class="cool m" title="number of 'useful comment' votes received">1 </span>
+</div>
+</div>
+<div class="comment-text js-comment-text-and-form">
+<div class="comment-body js-comment-edit-hide">
+<span class="comment-copy m">I <b>won</b>der <b>w</b>hy  <code>.<b>te</b>xt </code> <b>i</b>s <b>n</b>ot <b>ment</b>ioned <b>i</b>n <b>t</b>he <b>document</b>ation... </span>
+<div class="d-inline-flex ai-center">
+– <a class="comment-user" href="/users/13944524/s-b" title="12,719 reputation">S.B</a>
+</div>
+<span class="comment-date m" dir="ltr"><b>Oc</b>t 30, 2021 <b>a</b>t 21:30 </span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div data-anon="true" data-rep="50" id="comments-link-25328374">
+<a class="js-add-link comments-link disabled-link" href="#" role="button" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">Add a comment</a>
+<span class="js-link-separator dno m"> |  </span>
+<a class="js-show-link comments-link dno" href="#" onclick="" role="button" title="Expand to show all comments on this post"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="js-zone-container zone-container-main">
+<div class="everyonelovesstackoverflow everyoneloves__mid-leaderboard everyoneloves__leaderboard" id="dfp-mlb"></div>
+<div class="js-report-ad-button-container" style="width: 728px"></div>
+</div>
+<a name="45686338"></a>
+<div class="answer js-answer" data-answerid="45686338" data-highest-scored="0" data-parentid="25327693" data-position-on-page="2" data-question-has-accepted-highest-score="1" data-score="7" id="answer-45686338" itemprop="suggestedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<div class="post-layout">
+<div class="votecell post-layout--left">
+<div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="45686338">
+<button aria-label="Up vote" aria-pressed="false" class="js-vote-up-btn flex--item s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is useful">
+<svg aria-hidden="true" class="svg-icon iconArrowUp" height="18" viewbox="0 0 18 18" width="18"><path d="M1 12h16L9 4l-8 8Z"></path></svg>
+</button>
+<div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4" data-value="7" itemprop="upvoteCount">
+            7
+        </div>
+<button aria-label="Down vote" aria-pressed="false" class="js-vote-down-btn flex--item mb8 s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is not useful">
+<svg aria-hidden="true" class="svg-icon iconArrowDown" height="18" viewbox="0 0 18 18" width="18"><path d="M1 6h16l-8 8-8-8Z"></path></svg>
+</button>
+<button aria-controls="" aria-pressed="false" class="js-saves-btn s-btn s-btn__unset c-pointer py4" data-controller="s-tooltip" data-post-id="45686338" data-post-type-id="2" data-s-popover-auto-show="false" data-s-popover-placement="" data-s-tooltip-placement="right" data-user-privilege-for-post-click="0" id="saves-btn-45686338" title="Save this answer." type="button">
+<svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" height="18" viewbox="0 0 18 18" width="18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+<svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" height="18" viewbox="0 0 18 18" width="18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button>
+<div aria-label="Accepted" class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8 d-none" data-s-tooltip-placement="right" role="note" tabindex="0" title="Loading when this answer was accepted…">
+<div class="ta-center">
+<svg aria-hidden="true" class="svg-icon iconCheckmarkLg" height="36" viewbox="0 0 36 36" width="36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+</div>
+</div>
+<a aria-label="Timeline" class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" data-controller="s-tooltip" data-ks-title="timeline" data-s-tooltip-placement="right" data-shortcut="T" href="/posts/45686338/timeline" title="Show activity on this post."><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" height="18" viewbox="0 0 19 18" width="19"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+</div>
+<div class="answercell post-layout--right">
+<div class="s-prose js-post-body" itemprop="text">
+<p class="m"><b>If</b> a <b>t</b>ag <b>cont</b>ains <b>mo</b>re <b>th</b>an <b>o</b>ne <b>thi</b>ng, <b>th</b>en <b>it</b>’s <b>n</b>ot <b>cl</b>ear <b>wh</b>at .<b>str</b>ing <b>sho</b>uld <b>re</b>fer <b>t</b>o, <b>s</b>o .<b>str</b>ing <b>i</b>s <b>def</b>ined <b>t</b>o <b>b</b>e <b>Non</b>e: </p>
+<p class="m"><b>exam</b>ple: </p>
+<pre><code>&lt;td&gt;sometext&lt;p&gt;sometext&lt;/p&gt;&lt;/td&gt;
+</code></pre>
+<p class="m"><b>Th</b>e <b>ab</b>ove <b>co</b>de <b>wi</b>ll <b>ret</b>urn <b>NoneTy</b>pe <b>i</b>f: <b>td.st</b>ring <b>i</b>s <b>do</b>ne <b>bec</b>ause <b>t</b>he <b>t</b>d <b>cont</b>ains <b>te</b>xts <b>a</b>s <b>we</b>ll <b>a</b>s <b>ano</b>ther p <b>ta</b>g. <b>Bu</b>t <b>td.t</b>ext <b>wi</b>ll <b>gi</b>ve : <b>sometext</b>sometext </p>
+</div>
+<div class="mt24">
+<div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+<time datetime="2017-08-15T04:06:55" itemprop="dateCreated"></time>
+<div class="flex--item mr16" style="flex: 1 1 100px;">
+<div class="js-post-menu pt2" data-post-id="45686338" data-post-type-id="2">
+<div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+<div class="flex--item">
+<a class="js-share-link js-gps-track" data-controller="se-share-sheet" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-s-popover-placement="bottom-start" data-se-share-sheet-license-name="CC BY-SA 3.0" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-location="2" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter devto" data-se-share-sheet-subtitle="" data-se-share-sheet-title="Share a link to this answer" href="/a/45686338" itemprop="url" rel="nofollow" title="Short permalink to this answer">Share</a>
+</div>
+<div class="flex--item">
+<button aria-controls="" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-controller="s-tooltip " data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-s-popover-placement="bottom" data-s-tooltip-placement="bottom" id="btnFollowPost-45686338" title="Follow this answer to receive notifications" type="button">
+                    Follow
+                </button>
+</div>
+</div>
+<div class="js-menu-popup-container"></div>
+</div>
+</div>
+<div class="post-signature flex--item fl0">
+<div class="user-info">
+<div class="user-action-time">
+        answered <span class="relativetime m" title="2017-08-15 04:06:55Z"><b>Au</b>g 15, 2017 <b>a</b>t 4:06 </span>
+</div>
+<div class="user-gravatar32">
+<a href="/users/8410412/raju-thapa-everestblogger"><div class="gravatar-wrapper-32"><img alt="Raju Thapa EverestBlogger's user avatar" class="bar-sm" height="32" src="https://lh4.googleusercontent.com/-go5DAIEOs8s/AAAAAAAAAAI/AAAAAAAAAFs/MekwtMlxoGY/photo.jpg?sz=64" width="32"/></div></a>
+</div>
+<div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a href="/users/8410412/raju-thapa-everestblogger">Raju Thapa EverestBlogger</a><span class="d-none m" itemprop="name"><b>Raj</b>u <b>Tha</b>pa <b>EverestBl</b>ogger </span>
+<div class="-flair">
+<span class="reputation-score m" dir="ltr" title="reputation score ">131 </span><span aria-hidden="true" class="m" title="1 silver badge"><span class="badge2 m"></span><span class="badgecount m">1 </span></span><span class="v-visible-sr m">1 <b>sil</b>ver <b>ba</b>dge </span><span aria-hidden="true" class="m" title="1 bronze badge"><span class="badge3 m"></span><span class="badgecount m">1 </span></span><span class="v-visible-sr m">1 <b>bro</b>nze <b>ba</b>dge </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="d-none m" itemprop="commentCount"></span>
+<div class="post-layout--right js-post-comments-component">
+<div class="comments js-comments-container bt bc-black-075 mt12 dno" data-min-length="15" data-post-id="45686338" id="comments-45686338">
+<ul class="comments-list js-comments-list" data-addlink-disabled="true" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-remaining-comments-count="0">
+</ul>
+</div>
+<div data-anon="true" data-rep="50" id="comments-link-45686338">
+<a class="js-add-link comments-link disabled-link" href="#" role="button" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">Add a comment</a>
+<span class="js-link-separator dno m"> |  </span>
+<a class="js-show-link comments-link dno" href="#" onclick="" role="button" title="Expand to show all comments on this post"></a>
+</div>
+</div>
+</div>
+</div>
+<a name="25328309"></a>
+<div class="answer js-answer" data-answerid="25328309" data-highest-scored="0" data-parentid="25327693" data-position-on-page="3" data-question-has-accepted-highest-score="1" data-score="0" id="answer-25328309" itemprop="suggestedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<div class="post-layout">
+<div class="votecell post-layout--left">
+<div class="js-voting-container d-flex jc-center fd-column ai-stretch gs4 fc-black-200" data-post-id="25328309">
+<button aria-label="Up vote" aria-pressed="false" class="js-vote-up-btn flex--item s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is useful">
+<svg aria-hidden="true" class="svg-icon iconArrowUp" height="18" viewbox="0 0 18 18" width="18"><path d="M1 12h16L9 4l-8 8Z"></path></svg>
+</button>
+<div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4" data-value="0" itemprop="upvoteCount">
+            0
+        </div>
+<button aria-label="Down vote" aria-pressed="false" class="js-vote-down-btn flex--item mb8 s-btn ba bar-pill c-pointer as-center bc-black-100 fc-black-700 h:bg-theme-primary-100" data-controller="s-tooltip" data-s-tooltip-placement="right" data-selected-classes="fc-theme-primary bc-theme-primary bg-theme-primary-025" data-unselected-classes="bc-black-100 fc-black-700 h:bg-theme-primary-100" title="This answer is not useful">
+<svg aria-hidden="true" class="svg-icon iconArrowDown" height="18" viewbox="0 0 18 18" width="18"><path d="M1 6h16l-8 8-8-8Z"></path></svg>
+</button>
+<button aria-controls="" aria-pressed="false" class="js-saves-btn s-btn s-btn__unset c-pointer py4" data-controller="s-tooltip" data-post-id="25328309" data-post-type-id="2" data-s-popover-auto-show="false" data-s-popover-placement="" data-s-tooltip-placement="right" data-user-privilege-for-post-click="0" id="saves-btn-25328309" title="Save this answer." type="button">
+<svg aria-hidden="true" class="fc-theme-primary-500 js-saves-btn-selected d-none svg-icon iconBookmark" height="18" viewbox="0 0 18 18" width="18"><path d="M3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+<svg aria-hidden="true" class="js-saves-btn-unselected svg-icon iconBookmarkAlt" height="18" viewbox="0 0 18 18" width="18"><path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path></svg>
+</button>
+<div aria-label="Accepted" class="js-accepted-answer-indicator flex--item fc-green-700 py6 mtn8 d-none" data-s-tooltip-placement="right" role="note" tabindex="0" title="Loading when this answer was accepted…">
+<div class="ta-center">
+<svg aria-hidden="true" class="svg-icon iconCheckmarkLg" height="36" viewbox="0 0 36 36" width="36"><path d="m6 14 8 8L30 6v8L14 30l-8-8v-8Z"></path></svg>
+</div>
+</div>
+<a aria-label="Timeline" class="js-post-issue flex--item s-btn s-btn__unset c-pointer py6 mx-auto" data-controller="s-tooltip" data-ks-title="timeline" data-s-tooltip-placement="right" data-shortcut="T" href="/posts/25328309/timeline" title="Show activity on this post."><svg aria-hidden="true" class="mln2 mr0 svg-icon iconHistory" height="18" viewbox="0 0 19 18" width="19"><path d="M3 9a8 8 0 1 1 3.73 6.77L8.2 14.3A6 6 0 1 0 5 9l3.01-.01-4 4-4-4h3L3 9Zm7-4h1.01L11 9.36l3.22 2.1-.6.93L10 10V5Z"></path></svg></a>
+</div>
+</div>
+<div class="answercell post-layout--right">
+<div class="s-prose js-post-body" itemprop="text">
+<p class="m"><b>Th</b>e <b>ele</b>ment </p>
+<pre><code>&lt;td&gt;&lt;/td&gt;
+</code></pre>
+<p class="m"><b>do</b>es  <em><b>n</b>ot </em> <b>con</b>tain <b>a</b>n <b>em</b>pty <b>str</b>ing. <b>It</b> <b>i</b>s <b>equiv</b>alent <b>t</b>o </p>
+<pre><code>&lt;td/&gt;
+</code></pre>
+<p class="m"><b>wh</b>ich <b>h</b>as <b>n</b>o <b>chi</b>ld. <b>Fo</b>r XML, "<b>n</b>o <b>te</b>xt" <b>a</b>nd "<b>ze</b>ro <b>len</b>gth <b>te</b>xt" <b>i</b>s <b>t</b>he <b>sa</b>me. </p>
+<p class="m"><b>So</b>  <code><b>soup.s</b>tring </code> <b>i</b>s <b>cor</b>rect <b>t</b>o <b>ret</b>urn  <code><b>NoneTy</b>pe </code>. </p>
+<p class="m"><b>Se</b>e <b>al</b>so  <a href="https://stackoverflow.com/questions/3884876/how-to-create-an-xml-text-node-with-an-empty-string-value-in-java"><b>Ho</b>w <b>t</b>o <b>cre</b>ate <b>a</b>n XML <b>te</b>xt <b>no</b>de <b>wi</b>th <b>a</b>n <b>em</b>pty <b>str</b>ing <b>va</b>lue (<b>i</b>n <b>Jav</b>a) </a></p>
+</div>
+<div class="mt24">
+<div class="d-flex fw-wrap ai-start jc-end gs8 gsy">
+<time datetime="2014-08-15T14:30:32" itemprop="dateCreated"></time>
+<div class="flex--item mr16" style="flex: 1 1 100px;">
+<div class="js-post-menu pt2" data-post-id="25328309" data-post-type-id="2">
+<div class="d-flex gs8 s-anchors s-anchors__muted fw-wrap">
+<div class="flex--item">
+<a class="js-share-link js-gps-track" data-controller="se-share-sheet" data-gps-track="post.click({ item: 2, priv: 0, post_type: 2 })" data-s-popover-placement="bottom-start" data-se-share-sheet-license-name="CC BY-SA 3.0" data-se-share-sheet-license-url="https%3a%2f%2fcreativecommons.org%2flicenses%2fby-sa%2f3.0%2f" data-se-share-sheet-location="2" data-se-share-sheet-post-type="answer" data-se-share-sheet-social="facebook twitter devto" data-se-share-sheet-subtitle="" data-se-share-sheet-title="Share a link to this answer" href="/a/25328309" itemprop="url" rel="nofollow" title="Short permalink to this answer">Share</a>
+</div>
+<div class="flex--item">
+<button aria-controls="" class="s-btn s-btn__link js-follow-post js-follow-answer js-gps-track" data-controller="s-tooltip " data-gps-track="post.click({ item: 14, priv: 0, post_type: 2 })" data-s-popover-placement="bottom" data-s-tooltip-placement="bottom" id="btnFollowPost-25328309" title="Follow this answer to receive notifications" type="button">
+                    Follow
+                </button>
+</div>
+</div>
+<div class="js-menu-popup-container"></div>
+</div>
+</div>
+<div class="post-signature flex--item fl0">
+<div class="user-info">
+<div class="user-action-time">
+<a class="js-gps-track" data-gps-track="post.click({ item: 4, priv: 0, post_type: 2 })" href="/posts/25328309/revisions" title="show all edits to this post">edited <span class="relativetime m" title="2014-08-15 14:35:52Z"><b>Au</b>g 15, 2014 <b>a</b>t 14:35 </span></a>
+</div>
+<div class="user-gravatar32">
+</div>
+<div class="user-details">
+<div class="-flair">
+</div>
+</div>
+</div>
+</div>
+<div class="post-signature flex--item fl0">
+<div class="user-info">
+<div class="user-action-time">
+        answered <span class="relativetime m" title="2014-08-15 14:30:32Z"><b>Au</b>g 15, 2014 <b>a</b>t 14:30 </span>
+</div>
+<div class="user-gravatar32">
+<span class="anonymous-gravatar m"></span>
+</div>
+<div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        user1907906<span class="d-none m" itemprop="name"><b>user1907906</b> </span>
+<div class="-flair">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="d-none m" itemprop="commentCount">1 </span>
+<div class="post-layout--right js-post-comments-component">
+<div class="comments js-comments-container bt bc-black-075 mt12" data-min-length="15" data-post-id="25328309" id="comments-25328309">
+<ul class="comments-list js-comments-list" data-addlink-disabled="true" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-remaining-comments-count="0">
+<li class="comment js-comment" data-comment-id="39495182" data-comment-owner-id="620431" data-comment-score="1" id="comment-39495182">
+<div class="js-comment-actions comment-actions">
+<div class="comment-score js-comment-score js-comment-edit-hide">
+<span class="cool m" title="number of 'useful comment' votes received">1 </span>
+</div>
+</div>
+<div class="comment-text js-comment-text-and-form">
+<div class="comment-body js-comment-edit-hide">
+<span class="comment-copy m"><b>So</b> <b>i</b>n <b>ot</b>her <b>wo</b>rds <b>t</b>he  <code>.<b>str</b>ing </code> <b>refl</b>ects <b>t</b>he <b>ht</b>ml <b>i</b>n <b>th</b>at <b>th</b>ere <b>i</b>s <b>n</b>o <b>str</b>ing <b>i</b>n <b>t</b>he <b>em</b>pty <b>ta</b>g. <b>Wher</b>eas <b>t</b>he  <code>.<b>te</b>xt </code> <b>refl</b>ects <b>wh</b>at <b>i</b>s <b>actu</b>ally <b>se</b>en <b>a</b>s <b>i</b>n <b>a</b>n <b>em</b>pty <b>str</b>ing? <b>Apolo</b>gies <b>i</b>f <b>th</b>at <b>i</b>s <b>ove</b>rly <b>simpl</b>ified. </span>
+<div class="d-inline-flex ai-center">
+– <a class="comment-user owner" href="/users/620431/mez-pahlan" title="1,053 reputation">mez.pahlan</a>
+</div>
+<span class="comment-date m" dir="ltr"><b>Au</b>g 15, 2014 <b>a</b>t 20:30 </span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div data-anon="true" data-rep="50" id="comments-link-25328309">
+<a class="js-add-link comments-link disabled-link" href="#" role="button" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">Add a comment</a>
+<span class="js-link-separator dno m"> |  </span>
+<a class="js-show-link comments-link dno" href="#" onclick="" role="button" title="Expand to show all comments on this post"></a>
+</div>
+</div>
+</div>
+</div>
+<a name="new-answer"></a>
+<form action="/questions/25327693/answer/submit" class="js-add-answer-component post-form" id="post-form" method="post">
+<input id="post-id" type="hidden" value="25327693"/>
+<input id="qualityBanWarningShown" name="qualityBanWarningShown" type="hidden" value="false"/>
+<input name="referrer" type="hidden" value="https://www.google.com/"/>
+<h2 class="space m" id="your-answer-header">
+                                    <b>You</b>r <b>Answ</b>er
+                                 </h2>
+<script>
+        StackExchange.ifUsing("editor", function () {
+            StackExchange.using("externalEditor", function () {
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.init();
+                });
+            });
+        }, "code-snippets");
+    </script>
+<script>
+    StackExchange.ready(function() {
+        var channelOptions = {
+            tags: "".split(" "),
+            id: "1"
+        };
+        initTagRenderer("".split(" "), "".split(" "), channelOptions);
+
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.settings.snippets.snippetsEnabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            StackExchange.prepareEditor({
+                useStacksEditor: false,
+                heartbeatType: 'answer',
+                autoActivateHeartbeat: false,
+                convertImagesToLinks: true,
+                noModals: true,
+                showLowRepImageUploadWarning: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                imageUploader: {
+                    brandingHtml: "Powered by \u003ca href=\"https://imgur.com/\"\u003e\u003csvg class=\"svg-icon\" width=\"50\" height=\"18\" viewBox=\"0 0 50 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\u003ctitle\u003eImgur Logo\u003c/title\u003e\u003cpath d=\"M46.1709 9.17788C46.1709 8.26454 46.2665 7.94324 47.1084 7.58816C47.4091 7.46349 47.7169 7.36433 48.0099 7.26993C48.9099 6.97997 49.672 6.73443 49.672 5.93063C49.672 5.22043 48.9832 4.61182 48.1414 4.61182C47.4335 4.61182 46.7256 4.91628 46.0943 5.50789C45.7307 4.9328 45.2525 4.66231 44.6595 4.66231C43.6264 4.66231 43.1481 5.28821 43.1481 6.59048V11.9512C43.1481 13.2535 43.6264 13.8962 44.6595 13.8962C45.6924 13.8962 46.1709 13.2535 46.1709 11.9512V9.17788Z\"/\u003e\u003cpath d=\"M32.492 10.1419C32.492 12.6954 34.1182 14.0484 37.0451 14.0484C39.9723 14.0484 41.5985 12.6954 41.5985 10.1419V6.59049C41.5985 5.28821 41.1394 4.66232 40.1061 4.66232C39.0732 4.66232 38.5948 5.28821 38.5948 6.59049V9.60062C38.5948 10.8521 38.2696 11.5455 37.0451 11.5455C35.8209 11.5455 35.4954 10.8521 35.4954 9.60062V6.59049C35.4954 5.28821 35.0173 4.66232 34.0034 4.66232C32.9703 4.66232 32.492 5.28821 32.492 6.59049V10.1419Z\" /\u003e\u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M25.6622 17.6335C27.8049 17.6335 29.3739 16.9402 30.2537 15.6379C30.8468 14.7755 30.9615 13.5579 30.9615 11.9512V6.59049C30.9615 5.28821 30.4833 4.66231 29.4502 4.66231C28.9913 4.66231 28.4555 4.94978 28.1109 5.50789C27.499 4.86533 26.7335 4.56087 25.7005 4.56087C23.1369 4.56087 21.0134 6.57349 21.0134 9.27932C21.0134 11.9852 23.003 13.913 25.3754 13.913C26.5612 13.913 27.4607 13.4902 28.1109 12.6616C28.1109 12.7229 28.1161 12.7799 28.121 12.8346C28.1256 12.8854 28.1301 12.9342 28.1301 12.983C28.1301 14.4373 27.2502 15.2321 25.777 15.2321C24.8349 15.2321 24.1352 14.9821 23.5661 14.7787C23.176 14.6393 22.8472 14.5218 22.5437 14.5218C21.7977 14.5218 21.2429 15.0123 21.2429 15.6887C21.2429 16.7375 22.9072 17.6335 25.6622 17.6335ZM24.1317 9.27932C24.1317 7.94324 24.9928 7.09766 26.1024 7.09766C27.2119 7.09766 28.0918 7.94324 28.0918 9.27932C28.0918 10.6321 27.2311 11.5116 26.1024 11.5116C24.9737 11.5116 24.1317 10.6491 24.1317 9.27932Z\"/\u003e\u003cpath d=\"M16.8045 11.9512C16.8045 13.2535 17.2637 13.8962 18.2965 13.8962C19.3298 13.8962 19.8079 13.2535 19.8079 11.9512V8.12928C19.8079 5.82936 18.4879 4.62866 16.4027 4.62866C15.1594 4.62866 14.279 4.98375 13.3609 5.88013C12.653 5.05154 11.6581 4.62866 10.3573 4.62866C9.34336 4.62866 8.57809 4.89931 7.9466 5.5079C7.58314 4.9328 7.10506 4.66232 6.51203 4.66232C5.47873 4.66232 5.00066 5.28821 5.00066 6.59049V11.9512C5.00066 13.2535 5.47873 13.8962 6.51203 13.8962C7.54479 13.8962 8.0232 13.2535 8.0232 11.9512V8.90741C8.0232 7.58817 8.44431 6.91179 9.53458 6.91179C10.5104 6.91179 10.893 7.58817 10.893 8.94108V11.9512C10.893 13.2535 11.3711 13.8962 12.4044 13.8962C13.4375 13.8962 13.9157 13.2535 13.9157 11.9512V8.90741C13.9157 7.58817 14.3365 6.91179 15.4269 6.91179C16.4027 6.91179 16.8045 7.58817 16.8045 8.94108V11.9512Z\"/\u003e\u003cpath d=\"M3.31675 6.59049C3.31675 5.28821 2.83866 4.66232 1.82471 4.66232C0.791758 4.66232 0.313354 5.28821 0.313354 6.59049V11.9512C0.313354 13.2535 0.791758 13.8962 1.82471 13.8962C2.85798 13.8962 3.31675 13.2535 3.31675 11.9512V6.59049Z\" /\u003e\u003cpath d=\"M1.87209 0.400291C0.843612 0.400291 0 1.1159 0 1.98861C0 2.87869 0.822846 3.57676 1.87209 3.57676C2.90056 3.57676 3.7234 2.87869 3.7234 1.98861C3.7234 1.1159 2.90056 0.400291 1.87209 0.400291Z\" fill=\"#1BB76E\"/\u003e\u003c/svg\u003e\u003c/a\u003e",
+                    contentPolicyHtml: "User contributions licensed under \u003ca href=\"https://stackoverflow.com/help/licensing\"\u003eCC BY-SA\u003c/a\u003e \u003ca href=\"https://stackoverflow.com/legal/content-policy\"\u003e(content policy)\u003c/a\u003e",
+                    allowUrls: true
+                },
+                onDemand: true,
+                discardSelector: ".discard-answer",
+                enableTables: true,
+                isStacksEditorPreviewEnabled: false
+                ,immediatelyShowMarkdownHelp:true,enableTables:true,enableSnippets:true
+            });
+                    }
+    });
+</script>
+<div class="post-editor js-post-editor" id="post-editor">
+<div class="ps-relative">
+<div class="wmd-container mb8">
+<div class="wmd-button-bar btr-sm" id="wmd-button-bar"></div>
+<div class="js-stacks-validation">
+<div class="ps-relative">
+<textarea aria-labelledby="your-answer-header" class="wmd-input s-input bar0 js-post-body-field" cols="92" data-editor-type="wmd" data-min-length="" data-post-type-id="2" id="wmd-input" name="post-text" rows="15" tabindex="101"></textarea>
+</div>
+<div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+</div>
+</div>
+</div>
+<aside aria-hidden="true" class="d-flex ai-start jc-space-between js-answer-help s-notice s-notice__warning pb0 pr4 pt4 mb8 d-none" role="status">
+<div class="flex--item pt8">
+<p class="m"><b>Than</b>ks <b>f</b>or <b>contri</b>buting <b>a</b>n <b>ans</b>wer <b>t</b>o <b>Sta</b>ck <b>Overf</b>low! </p><ul><li>Please be sure to <em>answer the question</em>. Provide details and share your research!</li></ul><p class="m"><b>Bu</b>t  <em><b>av</b>oid </em> … </p><ul><li>Asking for help, clarification, or responding to other answers.</li><li>Making statements based on opinion; back them up with references or personal experience.</li></ul><p class="m"><b>To</b> <b>le</b>arn <b>mo</b>re, <b>s</b>ee <b>o</b>ur  <a href="/help/how-to-answer"><b>ti</b>ps <b>o</b>n <b>wri</b>ting <b>gr</b>eat <b>ans</b>wers </a>. </p>
+</div>
+<button class="flex--item js-answer-help-close-btn s-btn s-btn__muted fc-dark">
+<svg aria-hidden="true" class="svg-icon iconClear" height="18" viewbox="0 0 18 18" width="18"><path d="M15 4.41 13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41Z"></path></svg>
+</button>
+</aside>
+<div>
+<div class="fc-success h24" id="draft-saved" style="display:none;">Draft saved</div>
+<div class="fc-error h24" id="draft-discarded" style="display:none;">Draft discarded</div>
+</div>
+<div class="s-prose mb16 wmd-preview js-wmd-preview" id="wmd-preview"></div>
+<div></div>
+<div class="edit-block">
+<input id="fkey" name="fkey" type="hidden" value="0bbaf3e5a2c7c822ad08d629ab4157766f809a1270358c40cdc93e0d87203291"/>
+<input id="author" name="author" type="text"/>
+</div>
+</div>
+<div class="ps-relative">
+<div class="form-item dno new-post-login p0 my16">
+<div class="d-flex gs16 md:fd-column new-login-form">
+<div class="d-flex fd-column w50 md:w-auto gsy gs8 jc-space-between new-login-left">
+<h3 class="flex--item fs-title m"><b>Sig</b>n <b>u</b>p <b>o</b>r  <a href="/users/login?ssrc=question_page&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup%23new-answer" id="login-link"><b>l</b>og <b>i</b>n </a></h3>
+<script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                                                });
+                        </script>
+<div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login" data-ga='["sign up","Sign Up Started - Google","New Post",null,null]'>
+<svg aria-hidden="true" class="native svg-icon iconGoogle" height="18" viewbox="0 0 18 18" width="18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18Z" fill="#4285F4"></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17Z" fill="#34A853"></path><path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07Z" fill="#FBBC05"></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3Z" fill="#EA4335"></path></svg> Sign up using Google
+                        </div>
+<div class="flex--item s-btn s-btn__muted s-btn__icon facebook-login" data-ga='["sign up","Sign Up Started - Facebook","New Post",null,null]'>
+<svg aria-hidden="true" class="svg-icon iconFacebook" height="18" viewbox="0 0 18 18" width="18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill="#4167B2"></path></svg> Sign up using Facebook
+                        </div>
+<div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon stackexchange-login" data-ga='["sign up","Sign Up Navigation","New Post",null,null]'>
+<svg aria-hidden="true" class="native svg-icon iconLogoGlyphXSm" height="18" viewbox="0 0 18 18" width="18"><path d="M14 16v-5h2v7H2v-7h2v5h10Z" fill="#BCBBBB"></path><path d="m12.09.72-1.21.9 4.5 6.07 1.22-.9L12.09.71ZM5 15h8v-2H5v2Zm9.15-5.87L8.35 4.3l.96-1.16 5.8 4.83-.96 1.16Zm-7.7-1.47 6.85 3.19.63-1.37-6.85-3.2-.63 1.38Zm6.53 5L5.4 11.39l.38-1.67 7.42 1.48-.22 1.46Z" fill="#F48024"></path></svg> Sign up using Email and Password
+                        </div>
+</div>
+<input class="use-facebook" name="use-facebook" type="hidden" value="false">
+<input class="use-google" name="use-google" type="hidden" value="false">
+<button class="d-none js-submit-openid" type="button">Submit</button>
+<div class="d-flex gsy gs8 fd-column w50 md:w-auto new-login-right form-item p0">
+<h3 class="flex--item fs-title m"><b>Pos</b>t <b>a</b>s a <b>gu</b>est </h3>
+<div class="flex--item">
+<div class="d-flex gs4 gsy fd-column">
+<label class="s-label" for="display-name">Name</label>
+<div class="d-flex ps-relative">
+<input class="s-input" id="display-name" maxlength="30" name="display-name" placeholder="" tabindex="105" type="text" value=""/>
+</div>
+</div>
+</div>
+<div class="flex--item">
+<div class="d-flex gs4 gsy fd-column">
+<div class="flex--item">
+<div class="d-flex gs2 gsy fd-column">
+<label class="flex--item s-label" for="m-address">Email</label>
+<p class="flex--item s-description m"><b>Requi</b>red, <b>b</b>ut <b>ne</b>ver <b>sh</b>own </p>
+</div>
+</div>
+<div class="d-flex ps-relative">
+<input class="s-input js-post-email-field" id="m-address" name="m-address" placeholder="" size="40" tabindex="106" type="text" value=""/>
+</div>
+</div>
+</div>
+</div>
+</input></input></div>
+</div>
+<script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'https%3a%2f%2fstackoverflow.com%2fquestions%2f25327693%2fdifference-between-string-and-text-beautifulsoup%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+<noscript>
+<h3 class="flex--item fs-title m"><b>Pos</b>t <b>a</b>s a <b>gu</b>est </h3>
+<div class="flex--item">
+<div class="d-flex gs4 gsy fd-column">
+<label class="s-label" for="display-name">Name</label>
+<div class="d-flex ps-relative">
+<input class="s-input" id="display-name" maxlength="30" name="display-name" placeholder="" tabindex="105" type="text" value=""/>
+</div>
+</div>
+</div>
+<div class="flex--item">
+<div class="d-flex gs4 gsy fd-column">
+<div class="flex--item">
+<div class="d-flex gs2 gsy fd-column">
+<label class="flex--item s-label" for="m-address">Email</label>
+<p class="flex--item s-description m"><b>Requi</b>red, <b>b</b>ut <b>ne</b>ver <b>sh</b>own </p>
+</div>
+</div>
+<div class="d-flex ps-relative">
+<input class="s-input js-post-email-field" id="m-address" name="m-address" placeholder="" size="40" tabindex="106" type="text" value=""/>
+</div>
+</div>
+</div>
+</noscript>
+</div>
+<div class="form-submit clear-both d-flex gsx gs4">
+<button autocomplete="off" class="flex--item s-btn s-btn__primary s-btn__icon" id="submit-button" tabindex="120" type="submit">
+                                            Post Your Answer
+                                        </button>
+<button class="flex--item s-btn s-btn__danger discard-answer dno">
+                                            Discard
+                                        </button>
+<p class="privacy-policy-agreement m">
+                                                <b>By</b> <b>clic</b>king “<b>Pos</b>t <b>You</b>r <b>Answe</b>r”, <b>y</b>ou <b>ag</b>ree <b>t</b>o <b>o</b>ur  <a class="-link" href="https://stackoverflow.com/legal/terms-of-service/public" name="tos" target="_blank"><b>te</b>rms <b>o</b>f <b>ser</b>vice </a> <b>a</b>nd <b>ackno</b>wledge <b>th</b>at <b>y</b>ou <b>ha</b>ve <b>re</b>ad <b>a</b>nd <b>under</b>stand <b>o</b>ur  <a class="-link" href="https://stackoverflow.com/legal/privacy-policy" name="privacy" target="_blank"><b>pri</b>vacy <b>pol</b>icy </a> <b>a</b>nd  <a class="-link" href="/conduct" name="conduct" target="_blank"><b>co</b>de <b>o</b>f <b>con</b>duct </a>.  
+ </p>
+</div>
+<div aria-live="polite" class="js-general-error general-error clear-both d-none"></div>
+</form>
+<h2 class="bottom-notice m" data-loc="1">
+ 
+<b>Not</b> <b>t</b>he <b>ans</b>wer <b>you</b>'re <b>loo</b>king <b>fo</b>r? <b>Brow</b>se <b>ot</b>her <b>ques</b>tions <b>tag</b>ged <b>pythonbea</b>utifulsoup <b>o</b>r <b>a</b>sk <b>yo</b>ur <b>o</b>wn <b>ques</b>tion.                                 
+ </h2>
+</div>
+</div>
+<div aria-label="sidebar" class="show-votes" id="sidebar" role="complementary">
+<div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
+<ul class="d-block p0 m0">
+<li class="s-sidebarwidget--header s-sidebarwidget__small-bold-text d-flex fc-black-600 d:fc-black-900 bb bbw1">
+                            The Overflow Blog
+                        </li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" height="14" viewbox="0 0 14 14" width="14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","The Overflow Blog","https://stackoverflow.blog/2023/07/18/how-ics-can-get-recognition-for-their-work-on-big-projects-ep-590/",null,null]' data-gps-track="communitybulletin.click({ priority: 1, position: 0 })" href="https://stackoverflow.blog/2023/07/18/how-ics-can-get-recognition-for-their-work-on-big-projects-ep-590/">How ICs can get recognition for their work on big projects (Ep. 590)</a>
+</div>
+</li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" height="14" viewbox="0 0 14 14" width="14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0ZM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88Z"></path></svg> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","The Overflow Blog","https://stackoverflow.blog/2023/07/19/how-ai-can-help-your-business-without-the-hallucinations/",null,null]' data-gps-track="communitybulletin.click({ priority: 1, position: 1 })" href="https://stackoverflow.blog/2023/07/19/how-ai-can-help-your-business-without-the-hallucinations/">How AI can help your business, without the hallucinations</a>
+<div class="fc-light fs-italic">sponsored post</div>
+</div>
+</li>
+<li class="s-sidebarwidget--header s-sidebarwidget__small-bold-text d-flex fc-black-600 d:fc-black-900 bb bbw1">
+                            Featured on Meta
+                        </li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","Featured on Meta","https://meta.stackexchange.com/questions/390761/colors-update-a-more-detailed-look",null,null]' data-gps-track="communitybulletin.click({ priority: 3, position: 2 })" href="https://meta.stackexchange.com/questions/390761/colors-update-a-more-detailed-look">Colors update: A more detailed look</a>
+</div>
+</li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","Featured on Meta","https://meta.stackexchange.com/questions/391338/stack-overflow-at-wearedevelopers-world-congress-in-berlin",null,null]' data-gps-track="communitybulletin.click({ priority: 3, position: 3 })" href="https://meta.stackexchange.com/questions/391338/stack-overflow-at-wearedevelopers-world-congress-in-berlin">Stack Overflow at WeAreDevelopers World Congress in Berlin</a>
+</div>
+</li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","Featured on Meta","https://meta.stackoverflow.com/questions/425532/launching-2-new-collectives-php-and-nlp",null,null]' data-gps-track="communitybulletin.click({ priority: 6, position: 4 })" href="https://meta.stackoverflow.com/questions/425532/launching-2-new-collectives-php-and-nlp">Launching 2 new collectives: PHP and NLP</a>
+</div>
+</li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","Featured on Meta","https://meta.stackoverflow.com/questions/425525/conclusions-from-title-drafting-and-question-content-assistance-experiments-cond",null,null]' data-gps-track="communitybulletin.click({ priority: 6, position: 5 })" href="https://meta.stackoverflow.com/questions/425525/conclusions-from-title-drafting-and-question-content-assistance-experiments-cond" title="Conclusions from title-drafting and question-content assistance experiments conducted by Stack Exchange">Conclusions from title-drafting and question-content assistance experiments...</a>
+</div>
+</li>
+<li class="s-sidebarwidget--item d-flex px16">
+<div class="flex--item1 fl-shrink0">
+<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div> </div>
+<div class="flex--item wmn0 ow-break-word">
+<a class="js-gps-track" data-ga='["community bulletin board","Featured on Meta","https://meta.stackoverflow.com/questions/421831/temporary-policy-generative-ai-e-g-chatgpt-is-banned",null,null]' data-gps-track="communitybulletin.click({ priority: 6, position: 6 })" href="https://meta.stackoverflow.com/questions/421831/temporary-policy-generative-ai-e-g-chatgpt-is-banned">Temporary policy: Generative AI (e.g., ChatGPT) is banned</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="js-zone-container zone-container-sidebar">
+<div class="everyonelovesstackoverflow everyoneloves__top-sidebar" id="dfp-tsb"></div>
+<div class="js-report-ad-button-container" style="width: 300px"></div>
+</div>
+<div class="js-zone-container zone-container-sidebar">
+<div class="everyonelovesstackoverflow everyoneloves__mid-sidebar" id="dfp-msb"></div>
+<div class="js-report-ad-button-container" style="width: 300px"></div>
+</div>
+<div id="hireme"></div> <div class="module sidebar-linked">
+<h4 class="m" id="h-linked"><b>Link</b>ed </h4>
+<div class="linked" data-tracker="lq=1">
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 36239672, position: 0 })">
+<a href="/q/36239672" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/36239672/difference-between-text-and-string-in-beautifulsoup?noredirect=1">Difference between text and string in BeautifulSoup</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 38009468, position: 1 })">
+<a href="/q/38009468" title="Question score (upvotes - downvotes)">
+<div class="answer-votes default">0</div>
+</a>
+<a class="question-hyperlink" href="/questions/38009468/beautifulsoup4-cant-find-h3-tag-on-the-page?noredirect=1">BeautifulSoup4 can`t find h3 tag on the page</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 39322484, position: 2 })">
+<a href="/q/39322484" title="Question score (upvotes - downvotes)">
+<div class="answer-votes default">0</div>
+</a>
+<a class="question-hyperlink" href="/questions/39322484/no-text-for-br-in-beautifulsoup?noredirect=1">No text for &lt;br&gt; in BeautifulSoup</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 45449380, position: 3 })">
+<a href="/q/45449380" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">4</div>
+</a>
+<a class="question-hyperlink" href="/questions/45449380/web-scraping-get-text-from-a-class-with-beautifulsoup-and-python?noredirect=1">Web scraping - Get text from a class with BeautifulSoup and Python?</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 39156107, position: 4 })">
+<a href="/q/39156107" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">3</div>
+</a>
+<a class="question-hyperlink" href="/questions/39156107/cant-find-string-after-a-tag-with-beautifulsoup-in-python?noredirect=1">Can't find string after a tag with BeautifulSoup in Python?</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 31261068, position: 5 })">
+<a href="/q/31261068" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">2</div>
+</a>
+<a class="question-hyperlink" href="/questions/31261068/crawling-sitemap-xml-via-python?noredirect=1">Crawling sitemap.xml via python</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 45843025, position: 6 })">
+<a href="/q/45843025" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/45843025/parsing-html-tables-with-beautifulsoup-in-python?noredirect=1">Parsing html tables with Beautifulsoup in Python</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 57895743, position: 7 })">
+<a href="/q/57895743" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/57895743/pulling-company-name-from-webpage-within-a-tag?noredirect=1">Pulling company name from webpage within &lt;a&gt; tag</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 26003399, position: 8 })">
+<a href="/q/26003399" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/26003399/beautiful-soup-returns-element-wrapped-in-div-tags-how-do-i-strip-them?noredirect=1">Beautiful Soup returns element wrapped in &lt;div&gt; tags. How do I strip them?</a>
+</div>
+<div class="spacer js-gps-track" data-gps-track="linkedquestion.click({ source_post_id: 25327693, target_question_id: 29453720, position: 9 })">
+<a href="/q/29453720" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/29453720/extracting-link-title-from-beautiful-soup-python?noredirect=1">Extracting link title from beautiful soup python</a>
+</div>
+<div class="spacer more ml32 pl16 pt8">
+<a href="/questions/linked/25327693">See more linked questions</a>
+</div>
+</div>
+</div>
+<div class="module sidebar-related">
+<h4 class="m" id="h-related"><b>Rela</b>ted </h4>
+<div class="related js-gps-related-questions" data-tracker="rq=3">
+<div class="spacer" data-question-id="1153167">
+<a href="/q/1153167" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">5</div>
+</a>
+<a class="question-hyperlink" href="/questions/1153167/simple-python-beautiful-soup-type-question">Simple python / Beautiful Soup type question</a>
+</div>
+<div class="spacer" data-question-id="14712256">
+<a href="/q/14712256" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0</div>
+</a>
+<a class="question-hyperlink" href="/questions/14712256/beautifulsoup-string">BeautifulSoup string</a>
+</div>
+<div class="spacer" data-question-id="33318980">
+<a href="/q/33318980" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">4</div>
+</a>
+<a class="question-hyperlink" href="/questions/33318980/using-beautifulsoup-get-text">Using beautifulsoup get_text()</a>
+</div>
+<div class="spacer" data-question-id="35496332">
+<a href="/q/35496332" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">27</div>
+</a>
+<a class="question-hyperlink" href="/questions/35496332/differences-between-text-and-get-text">Differences between .text and .get_text()</a>
+</div>
+<div class="spacer" data-question-id="43234922">
+<a href="/q/43234922" title="Question score (upvotes - downvotes)">
+<div class="answer-votes default">2</div>
+</a>
+<a class="question-hyperlink" href="/questions/43234922/the-difference-between-contents-and-children">The difference between .contents and .children</a>
+</div>
+<div class="spacer" data-question-id="52093875">
+<a href="/q/52093875" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">5</div>
+</a>
+<a class="question-hyperlink" href="/questions/52093875/gettext-vs-text-vs-get-text">getText() vs text() vs get_text()</a>
+</div>
+<div class="spacer" data-question-id="59467530">
+<a href="/q/59467530" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/59467530/beautifulsoup-attributeerror-nonetype-object-has-no-attribute-text">BeautifulSoup AttributeError: 'NoneType' object has no attribute 'text'</a>
+</div>
+<div class="spacer" data-question-id="62977229">
+<a href="/q/62977229" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1</div>
+</a>
+<a class="question-hyperlink" href="/questions/62977229/python-beautifulsoup-just-text">Python BeautifulSoup - just Text</a>
+</div>
+<div class="spacer" data-question-id="63753197">
+<a href="/q/63753197" title="Question score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0</div>
+</a>
+<a class="question-hyperlink" href="/questions/63753197/getting-an-attributeerror-when-adding-text-attribute">Getting an AttributeError, when adding .text attribute</a>
+</div>
+<div class="spacer" data-question-id="66241790">
+<a href="/q/66241790" title="Question score (upvotes - downvotes)">
+<div class="answer-votes default">0</div>
+</a>
+<a class="question-hyperlink" href="/questions/66241790/get-text-doesnt-work-in-beautifulsoup">.get_text() doesn't work in BeautifulSoup</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+                 $(document).ready(function() {
+                     $(".js-gps-related-questions .spacer").click(function () {
+                        fireRelatedEvent($(this).index() + 1, $(this).data('question-id'));
+                     });
+
+                 function fireRelatedEvent(position, questionId) {
+                     StackExchange.using("gps", function() {
+                         StackExchange.gps.track('related_questions.click',
+                         {
+                             position: position,
+                             originQuestionId: 25327693,
+                             relatedQuestionId: +questionId,
+                             location: 'sidebar',
+                             source: 'Baseline'
+                         });    
+                     });
+                 }
+             });
+         </script>
+<div class="module tex2jax_ignore" id="hot-network-questions">
+<h4 class="m">
+ <a class="js-gps-track s-link s-link__inherit" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })" href="https://stackexchange.com/questions?tab=hot">
+            <b>Ho</b>t <b>Netw</b>ork <b>Questi</b>ons
+         </a>
+ </h4>
+<ul>
+<li>
+<div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://academia.stackexchange.com/questions/199307/undergraduate-with-research-partner-issues-concerns">
+                    Undergraduate with research partner issues/concerns
+                </a>
+</li>
+<li>
+<div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://mathoverflow.net/questions/450948/why-are-we-defining-character-groups-differently-for-additive-and-multiplicative">
+                    Why are we defining character groups differently for additive and multiplicative group in Tate's thesis?
+                </a>
+</li>
+<li>
+<div class="favicon favicon-serverfault" title="Server Fault"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://serverfault.com/questions/1137730/how-to-log-executions-of-specific-commands-on-linux-no-matter-where-it-came-from">
+                    How to log executions of specific commands on Linux no matter where it came from?
+                </a>
+</li>
+<li>
+<div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://stackoverflow.com/questions/76708329/docker-compose-no-longer-building-image-attributeerror-cython-sources">
+                    Docker-compose no longer building image (AttributeError: cython_sources)
+                </a>
+</li>
+<li>
+<div class="favicon favicon-pm" title="Project Management Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:208 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://pm.stackexchange.com/questions/34929/devops-timeline-estimates">
+                    Devops Timeline Estimates
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://diy.stackexchange.com/questions/276782/adding-salt-pellets-direct-to-home-water-tank">
+                    Adding salt pellets direct to home water tank
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://physics.stackexchange.com/questions/772506/what-might-be-the-half-life-of-observationally-stable-nuclei-with-energetically">
+                    What might be the half-life of observationally stable nuclei with energetically favorible decay modes?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://physics.stackexchange.com/questions/772523/why-does-changing-inertial-frames-lower-your-proper-time">
+                    Why does changing inertial frames lower your proper time?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-codegolf" title="Code Golf Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://codegolf.stackexchange.com/questions/262975/output-convert-to-unary-number">
+                    Output / Convert to unary number
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-retrocomputing" title="Retrocomputing Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:648 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://retrocomputing.stackexchange.com/questions/27365/do-the-mos-6510-and-8502-microprocessors-use-microcode">
+                    Do the MOS 6510 and 8502 microprocessors use microcode?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://academia.stackexchange.com/questions/199316/are-tas-supposed-to-get-paid-for-hours-it-takes-to-grade">
+                    Are TAs supposed to get paid for hours it takes to grade?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://math.stackexchange.com/questions/4738637/what-is-meant-by-logically-incorrect">
+                    What is meant by "logically incorrect"?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-scicomp" title="Computational Science Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:363 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://scicomp.stackexchange.com/questions/43037/packages-suitable-for-numerical-optimization-of-functions-with-discontinuous-gra">
+                    Packages suitable for numerical optimization of functions with discontinuous gradient at the point of minimum
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-law" title="Law Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://law.stackexchange.com/questions/93994/is-it-illegal-for-an-american-to-go-to-north-korea">
+                    Is it illegal for an American to go to North Korea?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://philosophy.stackexchange.com/questions/100815/definition-of-ownership">
+                    Definition of Ownership
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-gaming" title="Arqade"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://gaming.stackexchange.com/questions/403631/will-the-story-be-drastically-different-depending-on-the-house-i-choose-in-hogwa">
+                    Will the story be drastically different depending on the house I choose in Hogwarts Legacy?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://space.stackexchange.com/questions/64005/euler-angle-notation">
+                    Euler Angle Notation
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-cooking" title="Seasoned Advice"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://cooking.stackexchange.com/questions/124762/how-to-wash-dirty-herbs-in-bulk">
+                    How to wash dirty herbs in bulk
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://ell.stackexchange.com/questions/338893/what-does-the-serious-historian-refer-to-in-the-following-sentence">
+                    what does "the serious historian" refer to in the following sentence?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-law" title="Law Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://law.stackexchange.com/questions/94002/can-a-church-legally-initiate-formal-discipline-against-a-member-who-has-officia">
+                    Can a church legally initiate formal discipline against a member who has officially withdrawn/resigned from the church?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-superuser" title="Super User"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://superuser.com/questions/1797510/where-can-i-find-a-windows-10-pcl5-driver-for-an-unsupported-laserjet">
+                    Where can I find a Windows 10 PCL5 driver for an unsupported LaserJet?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-retrocomputing" title="Retrocomputing Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:648 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://retrocomputing.stackexchange.com/questions/27370/did-type-in-programs-or-type-in-listings-teach-programming-in-the-70s-and-80s-or">
+                    Did type-in-programs or type-in-listings teach programming in the 70s and 80s or was it just tedious typing of the source code?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://math.stackexchange.com/questions/4738482/proving-there-is-only-one-proof">
+                    Proving there is only one proof?
+                </a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-chess" title="Chess Stack Exchange"></div><a class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:435 }); posts_hot_network.click({ item_type:2, location:11 })" href="https://chess.stackexchange.com/questions/42572/does-move-disambiguation-happen-before-or-after-legality-checking">
+                    Does move disambiguation happen before or after legality checking?
+                </a>
+</li>
+</ul>
+<a class="show-more js-show-more js-gps-track" data-gps-track="posts_hot_network.click({ item_type:3, location:11 })" href="#">
+            more hot questions
+        </a>
+</div>
+<div class="js-feed-link" id="feed-link">
+<a href="/feeds/question/25327693" title="Feed of this question and its answers">
+<svg aria-hidden="true" class="fc-orange-400 svg-icon iconRss" height="18" viewbox="0 0 18 18" width="18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm0 1.5c6.9 0 12.5 5.6 12.5 12.5H13C13 9.55 8.45 5 3 5V2.5Zm0 5c4.08 0 7.5 3.41 7.5 7.5H8c0-2.72-2.28-5-5-5V7.5Zm0 5c1.36 0 2.5 1.14 2.5 2.5H3v-2.5Z"></path></svg>
+            Question feed
+        </a>
+</div>
+<aside aria-describedby="feed-modal-description" aria-hidden="true" aria-labelledby="feed-modal-title" class="s-modal js-feed-link-modal" role="dialog" tabindex="-1">
+<div class="s-modal--dialog js-modal-dialog wmx4" data-controller="se-draggable" role="document">
+<h1 class="s-modal--header fw-bold js-first-tabbable m" data-se-draggable-target="handle" id="feed-modal-title" tabindex="0">
+                <b>Subsc</b>ribe <b>t</b>o RSS
+             </h1>
+<div class="d-flex gs4 gsy fd-column">
+<div class="flex--item">
+<label class="d-block s-label c-default" for="feed-url">
+                        Question feed
+                        <p class="s-description mt2 m" id="feed-modal-description"><b>To</b> <b>subs</b>cribe <b>t</b>o <b>th</b>is RSS <b>fe</b>ed, <b>co</b>py <b>a</b>nd <b>pa</b>ste <b>th</b>is URL <b>in</b>to <b>yo</b>ur RSS <b>rea</b>der. </p>
+</label>
+</div>
+<div class="d-flex ps-relative">
+<input class="s-input" id="feed-url" name="feed-url" readonly="readonly" type="text" value="https://stackoverflow.com/feeds/question/25327693"/>
+<svg aria-hidden="true" class="s-input-icon fc-orange-400 svg-icon iconRss" height="18" viewbox="0 0 18 18" width="18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm0 1.5c6.9 0 12.5 5.6 12.5 12.5H13C13 9.55 8.45 5 3 5V2.5Zm0 5c4.08 0 7.5 3.41 7.5 7.5H8c0-2.72-2.28-5-5-5V7.5Zm0 5c1.36 0 2.5 1.14 2.5 2.5H3v-2.5Z"></path></svg>
+</div>
+</div>
+<a aria-label="Close" class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href="#">
+<svg aria-hidden="true" class="svg-icon iconClearSm" height="14" viewbox="0 0 14 14" width="14"><path d="M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41Z"></path></svg>
+</a>
+</div>
+</aside>
+</div>
+</div>
+<script>StackExchange.ready(function(){$.get('/posts/25327693/ivc/ae5d?prg=56ebdbe0-b78b-4dbe-88f4-640fe9d405b3');});</script>
+<noscript><div><img alt="" class="dno" height="0" src="/posts/25327693/ivc/ae5d?prg=56ebdbe0-b78b-4dbe-88f4-640fe9d405b3" width="0"/></div></noscript><div id="js-codeblock-lang" style="display:none">lang-py</div></div>
+</div>
+</div>
+<script type="text/javascript">
+    var cam = cam || { opt: {} };
+    var clcGamLoaderOptions = cam || { opt: {} };
+    var opt = clcGamLoaderOptions.opt;
+
+            opt.omni = 'BwoLCIDXiffRm4Q8EAUYzfCJDCACKAI6FnxweXRob258YmVhdXRpZnVsc291cHxAAUgBWhIJqkWvsjfBYk4Rv-TyZSnTOYLieQTTV_dFTfbk';
+        opt.refresh = !1;
+    opt.refreshInterval = 90;
+    opt.sf = !0;
+    opt.hb = !1;
+    opt.ll = !0;
+    opt.tlb_position = 0;
+    opt.personalization_consent = !0;
+    opt.targeting_consent = !0;
+    opt.performance_consent = !0;
+
+    opt.targeting = {Registered:['false'],'so-tag':['python','beautifulsoup'],'tag-reportable':['python','beautifulsoup'],'so_tag':['python','beautifulsoup'],NumberOfAnswers:['3']};
+    opt.adReportEnabled = !0;
+    opt.adReportUrl = '/ads/report-ad';
+    opt.adReportText = 'Report this ad';
+	opt.adReportFileTypeErrorMessage = 'Please select a PNG or JPG file.';
+    opt.adReportFileSizeErrorMessage = 'The file must be under 2 MiB.';
+	opt.adReportErrorText = 'Error uploading ad report.';
+	opt.adReportThanksText = 'Thanks for your feedback. We’ll review this against our code of conduct and take action if necessary.';
+    opt.adReportLoginExpiredMessage = 'Your login session has expired, please login and try again.';
+    opt.adReportLoginErrorMessage = 'An error occurred when loading the report form - please try again';
+	opt.adReportModalClass = 'js-ad-report';
+
+    opt.requestGuid = '56ebdbe0-b78b-4dbe-88f4-640fe9d405b3';
+
+
+    opt.targeting.TargetingConsent = ['True'];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('dfptestads')) {
+        const dfptestads = urlParams.get('dfptestads');
+        opt.targeting.DfpTestAds = dfptestads;
+    }
+</script>
+<script>;(()=>{"use strict";var __webpack_modules__={23:(e,t,o)=>{o.d(t,{Z7:()=>l,eq:()=>r,kG:()=>n});const s=/^\/tags\//.test(location.pathname)||/^\/questions\/tagged\//.test(location.pathname)?"tag-pages":/^\/$/.test(location.pathname)||/^\/home/.test(location.pathname)?"home-page":"question-pages";let a=location.hostname;const i={slots:{lb:[[728,90]],mlb:[[728,90]],smlb:[[728,90]],bmlb:[[728,90]],sb:e=>"dfp-tsb"===e?[[300,250],[300,600]]:[[300,250]],"tag-sponsorship":[[730,135]],"mobile-below-question":[[320,50],[300,250]],msb:[[300,250],[300,600]],"talent-conversion-tracking":[[1,1]],"site-sponsorship":[[230,60]]},ids:{"dfp-tlb":"lb","dfp-mlb":"mlb","dfp-smlb":"smlb","dfp-bmlb":"bmlb","dfp-tsb":"sb","dfp-isb":"sb","dfp-tag":"tag-sponsorship","dfp-msb":"msb","dfp-sspon":"site-sponsorship","dfp-m-aq":"mobile-below-question"},idsToExcludeFromAdReports:["dfp-sspon"]};function n(){return Object.keys(i.ids)}function r(e){return i.idsToExcludeFromAdReports.indexOf(e)<0}function l(e){var t=e.split("_")[0];const o=i.ids[t];let n=i.slots[o];return"function"==typeof n&&(n=n(t)),{path:`/248424177/${a}/${o}/${s}`,sizes:n,zone:o}}},865:(e,t,o)=>{function s(e){return"string"==typeof e?document.getElementById(e):e}function a(e){return!!(e=s(e))&&"none"===getComputedStyle(e).display}function i(e){return!a(e)}function n(e){return!!e}function r(e){return/^\s*$/.test(s(e).innerHTML)}function l(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.display="none"}function d(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.display="none",[].forEach.call(e.children,d)}function c(e){const{style:t}=e;t.height=t.maxHeight=t.minHeight="auto",t.removeProperty("display")}function p(e){const t=document.createElement("script");t.src=e,document.body.appendChild(t)}function g(e){return o=e,(t=[]).push=function(e){return o(),delete this.push,this.push(e)},t;var t,o}function h(e){let t="function"==typeof HTMLTemplateElement;var o=document.createElement(t?"template":"div");return e=e.trim(),o.innerHTML=e,t?o.content.firstChild:o.firstChild}o.d(t,{$Z:()=>c,Bv:()=>h,Gx:()=>p,Nj:()=>s,QZ:()=>g,cf:()=>l,pn:()=>i,wo:()=>d,xb:()=>r,xj:()=>a,yb:()=>n})},763:(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{t:()=>AdReports});var _common_helper__WEBPACK_IMPORTED_MODULE_2__=__webpack_require__(865),_console__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__(276),_ad_units__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(23);class AdReports{constructor(e,t){if(this.googletag=e,this.cam=t,this.allowedFileTypes=["image/png","image/jpg","image/jpeg"],this.ignoreValidation=!1,_console__WEBPACK_IMPORTED_MODULE_1__.cM("Ad reporting init"),this.cam=t,this.callOnButtonClick=e=>this.onButtonClick(e),this.googletag.pubads().addEventListener("slotRenderEnded",e=>this.handleSlotRendered(e)),Array.isArray(t.slotsRenderedEvents)){_console__WEBPACK_IMPORTED_MODULE_1__.cM("Adding report button to "+t.slotsRenderedEvents.length+" events that have transpired");for(var o=0;o<t.slotsRenderedEvents.length;o++)this.handleSlotRendered(t.slotsRenderedEvents[o])}}handleSlotRendered(e){if(e&&e.slot&&!e.isEmpty&&(e.creativeId||e.lineItemId||!e.isEmpty)){var t=e.slot.getSlotElementId();if(t){var o=document.getElementById(t);if(o)if((0,_ad_units__WEBPACK_IMPORTED_MODULE_0__.eq)(t)){var s=o?.closest(".js-zone-container")?.querySelector(".js-report-ad-button-container");s.innerHTML="",s.append(this.createButton(e)),s.style.height="24px",_console__WEBPACK_IMPORTED_MODULE_1__.cM("Added report button to the bottom of "+t)}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of "+t+": shouldHaveReportButton = false");else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of "+t+": resolved invalid adUnit element")}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of element: invalid adUnitElementId")}else _console__WEBPACK_IMPORTED_MODULE_1__.cM("Not adding report button to the bottom of element: invalid SlotRenderEndedEvent")}async onButtonClick(e){e.preventDefault();let t=e.target;const o=t.dataset.modalUrl,s=t.dataset.googleEventData;return await this.loadModal(o,t,s),!1}createButton(e){let t=document.createElement("button");var o=JSON.stringify(e);return t.dataset.googleEventData=o,t.dataset.modalUrl=this.cam.opt.adReportUrl,t.dataset.adUnit=e.slot.getSlotElementId(),t.classList.add("js-report-ad","s-btn","s-btn__link","fs-fine","mt2","float-right"),t.append(document.createTextNode(this.cam.opt.adReportText)),t.removeEventListener("click",this.callOnButtonClick),t.addEventListener("click",this.callOnButtonClick),t}async loadModal(url,$link,googleEventData){try{await window.StackExchange.helpers.loadModal(url,{returnElements:window.$($link)}),this.initForm(googleEventData)}catch(e){var message="",response=e.responseText?eval(`(${e.responseText})`):null;message=response&&response.isLoggedOut?this.cam.opt.adReportLoginExpiredMessage:this.cam.opt.adReportLoginErrorMessage,window.StackExchange.helpers.showToast(message,{type:"danger"})}}removeModal(){window.StackExchange.helpers.closePopups(document.querySelectorAll("."+this.cam.opt.adReportModalClass),"dismiss")}initForm(e,t=!1){this.ignoreValidation=t,this.$form=document.querySelector(".js-ad-report-form"),this.$googleEventData=this.$form.querySelector(".js-json-data"),this.$adReportReasons=this.$form.querySelectorAll(".js-ad-report-reason"),this.$adReportReasonOther=this.$form.querySelector(".js-ad-report-reason-other"),this.$fileUploaderInput=this.$form.querySelector(".js-file-uploader-input"),this.$imageUploader=this.$form.querySelector(".js-image-uploader"),this.$clearImageUpload=this.$form.querySelector(".js-clear-image-upload"),this.$imageUploaderText=this.$form.querySelector(".js-image-uploader-text"),this.$imageUploaderPreview=this.$form.querySelector(".js-image-uploader-preview"),this.$fileErrorMessage=this.$form.querySelector(".js-file-error");const o=this.$form.querySelector(".js-drag-drop-enabled"),s=this.$form.querySelector(".js-drag-drop-disabled");this.$googleEventData.value=e,this.$adReportReasons.forEach((e,t)=>e.addEventListener("change",e=>{this.$adReportReasonOther.classList.toggle("d-none","3"!==e.target.value)})),this.$fileUploaderInput.addEventListener("change",()=>{this.validateFileInput()&&this.updateImagePreview(this.$fileUploaderInput.files)}),this.$clearImageUpload.addEventListener("click",e=>{e.preventDefault(),this.clearImageUpload()});try{this.$fileUploaderInput[0].value="",this.$imageUploader.addEventListener("dragenter dragover dragleave drop",this.preventDefaults),this.$imageUploader.addEventListener("dragenter dragover",this.handleDragStart),this.$imageUploader.addEventListener("dragleave drop",this.handleDragEnd),this.$imageUploader.addEventListener("drop",this.handleDrop)}catch(e){o.classList.add("d-none"),s.classList.remove("d-none")}this.$form.removeEventListener("",this.handleDragEnd),this.$form.addEventListener("submit",async e=>(e.preventDefault(),this.submitForm(),!1))}clearImageUpload(){this.$fileUploaderInput.value="",this.$imageUploaderPreview.setAttribute("src",""),this.$imageUploaderPreview.classList.add("d-none"),this.$clearImageUpload.classList.add("d-none"),this.$imageUploaderText.classList.remove("d-none"),this.$imageUploader.classList.add("p16","ba","bas-dashed","bc-black-100")}preventDefaults(e){e.preventDefault(),e.stopPropagation()}handleDragStart(e){this.$imageUploader.classList.remove("bas-dashed"),this.$imageUploader.classList.add("bas-solid","bc-black-100")}handleDragEnd(e){this.$imageUploader.classList.remove("bas-solid","bc-black-100"),this.$imageUploader.classList.add("bas-dashed")}handleDrop(e){var t=e.originalEvent.dataTransfer.files;FileReader&&t&&1===t.length&&(this.$fileUploaderInput.files=t,this.validateFileInput()&&this.updateImagePreview(t))}setError(e){this.$fileErrorMessage.parentElement.classList.toggle("has-error",e)}updateImagePreview(e){this.$imageUploader.classList.remove("p16","ba","bas-dashed","bc-black-100"),this.$clearImageUpload.classList.remove("d-none"),this.$imageUploaderText.classList.add("d-none");var t=new FileReader;t.onload=e=>{null!=e.target&&(this.$imageUploaderPreview.setAttribute("src",e.target.result),this.$imageUploaderPreview.classList.remove("d-none"))},t.readAsDataURL(e[0])}validateFileInput(){if(this.ignoreValidation)return!0;const e=this.cam.opt.adReportFileTypeErrorMessage,t=this.cam.opt.adReportFileSizeErrorMessage;if(null==this.$fileUploaderInput.files)return!1;var o=this.$fileUploaderInput.files[0];return null==o?(this.setError(!0),!1):this.allowedFileTypes.indexOf(o.type)<0?(this.$fileErrorMessage.textContent=e,this.$fileErrorMessage.classList.remove("d-none"),this.setError(!0),!1):o.size>2097152?(this.$fileErrorMessage.textContent=t,this.$fileErrorMessage.classList.remove("d-none"),this.setError(!0),!1):(this.$fileErrorMessage.classList.add("d-none"),this.setError(!1),!0)}async gatherDiagnosticInfo(){return{BrowserVersion:await this.getBrowserVersion()}}getElementSource(e){return e.outerHTML}getNestedIFrameElement(e){var t=e.querySelector("iframe");return t.contentDocument?t.contentDocument.documentElement:t.contentWindow.document.documentElement}async getBrowserVersion(){return await navigator.userAgentData.getHighEntropyValues(["fullVersionList"]).then(e=>JSON.stringify(e.fullVersionList))}async submitForm(){if(!this.validateFileInput())return!1;this.$form.querySelector("[type=submit]").setAttribute("disabled","true");var e=JSON.parse(this.$googleEventData.value||"{}");e.Reason=parseInt(this.$form.querySelector(".js-ad-report-reason:checked").value,10),e.Description=this.$adReportReasonOther.value,this.$googleEventData.value=JSON.stringify(e);var t=new FormData(this.$form);if("1"===t.get("shareDiagnosticInfo")){var o=await this.gatherDiagnosticInfo();Object.keys(o).forEach(e=>t.append(e,o[e]))}try{const e=await window.fetch(this.$form.getAttribute("action"),{method:this.$form.getAttribute("method"),body:t,cache:"no-cache"}),o=e.headers.get("content-type")||"",a=await e.text();if(!e.ok)throw new Error("response not valid");if(0===o.indexOf("text/html")){var s=(0,_common_helper__WEBPACK_IMPORTED_MODULE_2__.Bv)(a);const e=s?s.querySelector(".js-modal-content"):null;if(_console__WEBPACK_IMPORTED_MODULE_1__.cM("$popupContent"),_console__WEBPACK_IMPORTED_MODULE_1__.cM(e),!e)throw new Error(`Could not find .js-modal-content in response from ${this.$form.getAttribute("action")}`);document.querySelector(".js-modal-content").replaceWith(e)}else window.StackExchange.helpers.showToast(this.cam.opt.adReportThanksText,{type:"success"}),this.removeModal()}catch(e){window.StackExchange.helpers.showToast(this.cam.opt.adReportErrorText,{type:"danger"})}finally{let e=this.$form.querySelector("[type=submit]");e&&e.removeAttribute("disabled")}}}},276:(e,t,o)=>{function s(...e){}function a(...e){}o.d(t,{cM:()=>s,vU:()=>a})}},__webpack_module_cache__={};function __webpack_require__(e){var t=__webpack_module_cache__[e];if(void 0!==t)return t.exports;var o=__webpack_module_cache__[e]={exports:{}};return __webpack_modules__[e](o,o.exports,__webpack_require__),o.exports}__webpack_require__.d=(e,t)=>{for(var o in t)__webpack_require__.o(t,o)&&!__webpack_require__.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},__webpack_require__.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var __webpack_exports__={};(()=>{var e=__webpack_require__(276),t=(e=>(e[e.Above=0]="Above",e[e.Below=1]="Below",e))(t||{});const o=Object.assign({},{"lib":"https://cdn.sstatic.net/clc/js/bundles/gam_loader_script/gam_loader_script.bundle.741.17faee8eba9a98950467.min.js","style":null,"u":null,"wa":true,"kt":2000,"tto":true,"h":"clc.stackoverflow.com","allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(.*\\.googlesyndication)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true,"al":false,"abd":true,"cpa_liid":[5882654614],"cpa_cid":[138377597667],"dp":false});var s=__webpack_require__(23),a=__webpack_require__(865),i=__webpack_require__(763);class n{constructor(t,o){this.googletag=t,this.interval=o,e.cM("Ad refresh init. interval: "+o),this.googletag.pubads().addEventListener("impressionViewable",e=>this.onImpressionViewable(e)),e.cM("done enabling ad refresh")}onImpressionViewable(t){var o=t.slot;e.cM("ad refresh - slot "+o.getSlotElementId()+" is viewable, initializing refresh"),this.scheduleRefresh(o)}scheduleRefresh(e){setTimeout(()=>this.refreshAdSlot(e),1e3*this.interval)}refreshAdSlot(t){var o=t.getSlotElementId();this.isElementVisibleInBrowser(o)?(e.cM("refreshing ad slot "+o),googletag.pubads().refresh([t])):(e.cM("refresh skipped this time; ad slot not viewable:"+o),this.scheduleRefresh(t))}isElementVisibleInBrowser(e){var t=document.getElementById(e);if(null!==t){var o=t.getBoundingClientRect();if(o.top>=0&&o.left>=0&&o.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&o.right<=(window.innerWidth||document.documentElement.clientWidth))return!0}return!1}}window.cam=new class{constructor(){this.gptImported=!1,this.collapsed={},e.cM("constructor"),this.clc_options=o,window.clcGamLoaderOptions?Object.assign(this,window.clcGamLoaderOptions):void 0===this.opt&&(this.opt=window.opt)}init(){if(e.cM("init"),void 0===this.opt)throw new Error("opt not set, required by GAM Loader");e.cM("setup message handler"),window.addEventListener("message",e=>{this.onmessage(e)}),this.opt.targeting&&this.opt.targeting.ProductVariant&&"SystemDefault"===this.opt.targeting.ProductVariant[0]&&(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?this.opt.targeting.ProductVariant="Dark":this.opt.targeting.ProductVariant="Light")}handleSlotRenderedNoAdReport(){if(googletag.pubads().addEventListener("slotRenderEnded",e=>this.applyExtraMarginBottom(e)),Array.isArray(this.slotsRenderedEvents))for(var e=0;e<this.slotsRenderedEvents.length;e++)this.applyExtraMarginBottom(this.slotsRenderedEvents[e])}onmessage(t){let o="omni";if(t.data&&("string"==typeof t.data||t.data instanceof String)){if(0===t.data.indexOf("get-omni-")){e.cM("Recevied get-omni message, sending back omni");var s=t.source,i=this.opt.omni,n="string"==typeof i?i:"";s.postMessage([o,n,this.opt.requestGuid].join("|"),"*")}else if(0===t.data.indexOf("collapse-")){e.cM("Recevied collapse message, collapse ad iframe"),e.cM(t);for(var r=t.source.window,l=document.getElementsByTagName("IFRAME"),d=0;d<l.length;d++){var c=l[d];if(c.contentWindow==r)return void(0,a.wo)(c.parentElement.parentElement.parentElement)}}else if(0===t.data.indexOf("resize|")){e.cM("Recevied resize message, resize ad iframe"),e.cM(t);let o=this._getFrameByEvent(t),s=t.data.indexOf("|")+1,a=t.data.slice(s),i=parseFloat(a)+.5;e.cM("New iframe height "+i),o.height=i.toString(),o.parentElement.style.height=i.toString()+"px"}else if(0===t.data.indexOf("getmarkup|")){let o=t.data.indexOf("|")+1,s=t.data.slice(o);e.cM("Recevied get markup message: "+s);let a=this._getFrameByEvent(t).closest(".everyonelovesstackoverflow");const i=document.createElement("script");i.dataset.adZoneId=a.id,i.src=s,document.body.appendChild(i)}else if(0===t.data.indexOf("window-location|")){let o=t.data.indexOf("|")+1,s=t.data.slice(o);e.cM("Recevied window location message: "+s),s.startsWith("/")||(s="/"+s),window.open(window.location.protocol+"//"+window.location.host+s,"_blank")}}else e.cM("Received unhandled message")}_getFrameByEvent(e){return Array.from(document.getElementsByTagName("iframe")).filter(t=>t.contentWindow===e.source)[0]}classifyZoneIds(e){const t=e.map(a.Nj).filter(a.yb);return{eligible:t.filter(a.xb).filter(a.pn),ineligible:t.filter(a.xj)}}applyExtraMarginBottom(t){if(t&&t.slot&&!t.isEmpty&&(t.creativeId||t.lineItemId||!t.isEmpty)){var o=t.slot.getSlotElementId();if(o){var a=document.getElementById(o);if(a)if((0,s.eq)(o)){var i=a?.closest(".js-zone-container");i.style.marginBottom="24px",e.cM("Applied extra margin to the bottom of "+o)}else e.cM("Not applying extra margin to the bottom of "+o+": shouldHaveReportButton = false");else e.cM("Not applying extra margin to the bottom of "+o+": resolved invalid adUnit element")}else e.cM("Not applying extra margin to the bottom of element: invalid adUnitElementId")}else e.cM("Not applying extra margin to the bottom of element: invalid SlotRenderEndedEvent")}load(o=(0,s.kG)()){const r=this.opt.tlb_position===t.Above?["dfp-mlb","dfp-smlb"]:["dfp-mlb","dfp-smlb","dfp-tlb"];if(!this.isGptReady())return e.cM("Initializing..."),this.initGpt(),void googletag.cmd.push(()=>this.load(o));this.opt.adReportEnabled?(e.cM("Ad reporting enabled"),this.adReports=new i.t(googletag,this)):(e.cM("Ad reporting not enabled"),this.handleSlotRenderedNoAdReport()),this.opt.refresh?(e.cM("Ad refresh enabled"),this.adRefresh=new n(googletag,this.opt.refreshInterval)):e.cM("Ad refresh not enabled"),e.cM("Attempting to load ads into ids: ",o);const{eligible:l,ineligible:d}=this.classifyZoneIds(o);if(this.initDebugPanel(googletag,l.concat(d)),l.forEach(e=>(0,a.cf)(e)),d.forEach(a.wo),0===l.length)return void e.cM("Found no ad ids on page");e.cM("Eligible ids:",l),this.opt.abd&&this.appendAdblockDetector();var c=googletag.pubads().getSlots().filter(e=>o.indexOf(e.getSlotElementId())>=0);googletag.destroySlots(c),this.opt.sf&&(googletag.pubads().setForceSafeFrame(!0),googletag.pubads().setSafeFrameConfig({allowOverlayExpansion:!0,allowPushExpansion:!0,sandbox:!0})),e.cM("Targeting consent: Checking...");let p=!1,g=!1;void 0!==this.opt.targeting_consent&&(g=!0,e.cM("Targeting consent: Parameter set"),e.cM("Targeting consent: Consent given? ",this.opt.targeting_consent),p=this.opt.targeting_consent),void 0!==this.opt.personalization_consent&&(e.cM("Personalization consent: Parameter set"),e.cM("Personalization consent: Consent given? ",this.opt.personalization_consent),p=p&&this.opt.personalization_consent),p=p&&g,googletag.pubads().setRequestNonPersonalizedAds(p?0:1),p||googletag.pubads().setPrivacySettings({limitedAds:!0}),this.opt.ll||googletag.pubads().enableSingleRequest(),cam.sreEvent||(googletag.pubads().addEventListener("slotRenderEnded",e=>this.onSlotRendered(e)),cam.sreEvent=!0),this.setTargeting(googletag);var h=l.filter(e=>!this.opt.ll||r.indexOf(e.id)<0),m=l.filter(e=>!!this.opt.ll&&r.indexOf(e.id)>=0);e.cM("Up front ids:",h),e.cM("Lazy loaded ids:",m),h.forEach(t=>{e.cM(`Defining ad for element ${t.id}`),this.defineSlot(t.id,googletag),t.setAttribute("data-dfp-zone","true")}),googletag.enableServices(),h.forEach(t=>{e.cM(`Displaying ad for element ${t.id}`),googletag.cmd.push(()=>googletag.display(t.id))}),this.opt.ll&&(e.cM("Enabling lazy loading for GAM"),googletag.pubads().enableLazyLoad({fetchMarginPercent:0,renderMarginPercent:0}),e.cM("Setting up lazy loaded ad units"),m.forEach(t=>{e.cM(`Lazy loading - Defining Slot ${t.id}`),this.defineSlot(t.id,googletag)}),m.forEach(t=>{e.cM(`Lazy loading - Displaying ad for element ${t.id}`),googletag.cmd.push(()=>googletag.display(t.id))}))}setTargeting(t){let o=this.opt.targeting;if(!o)throw new Error("Targeting not defined");Object.keys(o).forEach(s=>{e.cM(`-> targeting - ${s}: ${o[s]}`),t.pubads().setTargeting(s,o[s])})}appendAdblockDetector(){const e=document.createElement("div");e.className="adsbox",e.id="clc-abd",e.style.position="absolute",e.style.pointerEvents="none",e.innerHTML="&nbsp;",document.body.appendChild(e)}onSlotRendered(o){try{const n=o.slot.getSlotElementId();let r=[];n||r.push("id=0");const l=document.getElementById(n);if(n&&!l&&r.push("el=0"),0!==r.length)return void this.stalled(r.join("&"));const{path:d,sizes:c,zone:p}=(0,s.Z7)(n);if(this.collapsed[p]&&o.isEmpty)return e.cM(`No line item for the element #${l.id}... collapsing.`),void(0,a.wo)(l);if(this.slotsRenderedEvents.push(o),o.lineItemId||o.creativeId||!o.isEmpty){e.cM(`Rendered ad for element #${l.id} [line item #${o.lineItemId}]`),e.cM(o);var i=l.parentElement;if(i.classList.contains("js-zone-container")){switch((0,a.cf)(i),n){case"dfp-tlb":this.opt.tlb_position===t.Above?i.classList.add("mb8"):i.classList.add("mt16");break;case"dfp-tag":i.classList.add("mb8");break;case"dfp-msb":i.classList.add("mt16");break;case"dfp-mlb":case"dfp-smlb":case"dfp-bmlb":i.classList.add("my8");break;case"dfp-isb":i.classList.add("mt24");break;case"dfp-m-aq":i.classList.add("my12"),i.classList.add("mx-auto")}(0,a.$Z)(i),(0,a.$Z)(l)}else e.cM(`No ad for element #${l.id}, collapsing`),e.cM(o),(0,a.wo)(l)}}catch(e){this.stalled("e=1")}}stalled(e){(new Image).src=`https://${this.clc_options.h}/stalled.gif?${e}`}defineSlot(t,o){"dfp-isb"===t&&(e.cM("-> targeting - Sidebar: Inline"),o.pubads().setTargeting("Sidebar",["Inline"])),"dfp-tsb"===t&&(e.cM("-> targeting - Sidebar: Right"),o.pubads().setTargeting("Sidebar",["Right"]));const{path:a,sizes:i,zone:n}=(0,s.Z7)(t);e.cM(`Defining slot for ${t}: ${a}, sizes: ${JSON.stringify(i)}`),o.defineSlot(a,i,t).addService(o.pubads())}importGptLibrary(){this.gptImported||(this.gptImported=!0,void 0===this.opt.targeting_consent||this.opt.targeting_consent?(0,a.Gx)("https://securepubads.g.doubleclick.net/tag/js/gpt.js"):(0,a.Gx)("https://pagead2.googlesyndication.com/tag/js/gpt.js"))}isGptReady(){return"undefined"!=typeof googletag&&!!googletag.apiReady}initGpt(){"undefined"==typeof googletag&&(window.googletag={cmd:(0,a.QZ)(()=>this.importGptLibrary())})}initDebugPanel(t,o){e.cM("initDebugPanel"),e.cM("Not showing debug panel")}},window.clcGamLoaderOptions&&(cam.init(),cam.load())})()})();</script>
+<footer class="site-footer js-footer" id="footer" role="contentinfo">
+<div class="site-footer--container">
+<div class="site-footer--logo">
+<a aria-label="Stack Overflow" href="https://stackoverflow.com"><svg aria-hidden="true" class="native svg-icon iconLogoGlyphMd" height="37" viewbox="0 0 32 37" width="32"><path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path></svg></a>
+</div>
+<nav class="site-footer--nav">
+<div class="site-footer--col">
+<h5 class="-title m"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 15})" href="https://stackoverflow.com"><b>Sta</b>ck <b>Overf</b>low </a></h5>
+<ul class="-list js-primary-footer-links">
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 16})" href="/questions">Questions</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })" href="/help">Help</a></li>
+</ul>
+</div>
+<div class="site-footer--col">
+<h5 class="-title m"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 19 })" href="https://stackoverflow.co/"><b>Produ</b>cts </a></h5>
+<ul class="-list">
+<li><a class="js-gps-track -link" data-ga='["teams traffic","footer - site nav","stackoverflow.com/teams",null,{"dimension4":"teams"}]' data-gps-track="footer.click({ location: 2, link: 29 })" href="https://stackoverflow.co/teams/">Teams</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 21 })" href="https://stackoverflow.co/advertising/">Advertising</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 40 })" href="https://stackoverflow.co/collectives/">Collectives</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 20 })" href="https://stackoverflow.co/talent/">Talent</a></li>
+</ul>
+</div>
+<div class="site-footer--col">
+<h5 class="-title m"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.co/"><b>Comp</b>any </a></h5>
+<ul class="-list">
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.co/">About</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 27 })" href="https://stackoverflow.co/company/press/">Press</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 9 })" href="https://stackoverflow.co/company/work-here/">Work Here</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackoverflow.com/legal">Legal</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackoverflow.com/legal/privacy-policy">Privacy Policy</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 37 })" href="https://stackoverflow.com/legal/terms-of-service">Terms of Service</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://stackoverflow.co/company/contact/">Contact Us</a></li>
+<li class="" id="consent-footer-link"><a class="js-gps-track -link js-cookie-settings" data-consent-popup-loader="footer" data-gps-track="footer.click({ location: 2, link: 38 })" href="#">Cookie Settings</a></li>
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 39 })" href="https://stackoverflow.com/legal/cookie-policy">Cookie Policy</a></li>
+</ul>
+</div>
+<div class="site-footer--col site-footer--categories-nav">
+<div>
+<h5 class="-title m"><a data-gps-track="footer.click({ location: 2, link: 30 })" href="https://stackexchange.com"><b>Sta</b>ck <b>Excha</b>nge <b>Netw</b>ork </a></h5>
+<ul class="-list">
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#technology">
+                                    Technology
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#culturerecreation">
+                                    Culture &amp; recreation
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#lifearts">
+                                    Life &amp; arts
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#science">
+                                    Science
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#professional">
+                                    Professional
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://stackexchange.com/sites#business">
+                                    Business
+                                </a>
+</li>
+<li class="mt16 md:mt0">
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://api.stackexchange.com/">
+                                    API
+                                </a>
+</li>
+<li>
+<a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" href="https://data.stackexchange.com/">
+                                    Data
+                                </a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="site-footer--copyright fs-fine md:mt24">
+<ul class="-list -social md:mb8">
+<li><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog?blb=1">Blog</a></li>
+<li><a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 31 })" href="https://www.facebook.com/officialstackoverflow/">Facebook</a></li>
+<li><a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 32 })" href="https://twitter.com/stackoverflow">Twitter</a></li>
+<li><a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 33 })" href="https://linkedin.com/company/stack-overflow">LinkedIn</a></li>
+<li><a class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 36 })" href="https://www.instagram.com/thestackoverflow">Instagram</a></li>
+</ul>
+<p class="md:mb0 m">
+<b>Sit</b>e <b>des</b>ign / <b>lo</b>go © 2023 <b>Sta</b>ck <b>Excha</b>nge <b>Inc</b>; <b>us</b>er <b>contri</b>butions <b>lice</b>nsed <b>un</b>der  CC BY-SA .                     <b>rev 2023.7.17.43537</b> 
+ </p>
+</div>
+</div>
+</footer>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WCZ03SZFCQ"></script>
+<script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+            </script>
+<script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            </script>
+<script>
+            StackExchange.ready(function() {
+
+                var ga3Settings = {
+                    autoLink: ["stackoverflow.blog","info.stackoverflowsolutions.com","stackoverflowsolutions.com"],
+                    sendTitles: true,
+                    tracker: window.ga,
+                    trackingCodes: [
+                        'UA-108242619-1'
+                    ],
+                    checkDimension: 'dimension42'
+                                                    };
+
+                var customGA4Dimensions = {};
+
+                        customGA4Dimensions["routename"] = "Questions/Show";
+                        customGA4Dimensions["tags"] = "|python|beautifulsoup|";
+
+                var ga4Settings = {
+                    tracker: gtag,
+                    trackingCodes: [
+                        'G-WCZ03SZFCQ'
+                    ],
+                    consentsToPerformanceCookies: "granted",
+                    consentsToTargetingCookies: "granted",
+                    eventParameters: customGA4Dimensions,
+                    checkForAdBlock: true,
+                    sendTitles: true,
+                    trackClicks: false,
+                };
+
+                StackExchange.ga.init({ GA3: ga3Settings, GA4: ga4Settings });
+
+
+                StackExchange.ga.setDimension('dimension2', '|python|beautifulsoup|');
+
+
+                StackExchange.ga.setDimension('dimension3', 'Questions/Show');
+
+
+                StackExchange.ga.setDimension('dimension7', "1689776954.335799075");
+
+                StackExchange.ga.trackPageView();
+            });
+        </script>
+<div class="d-none" id="onetrust-consent-sdk"></div>
+<div data-controller="s-modal" id="onetrust-banner-sdk"></div>
+<div class="d-none" id="ot-pc-content"></div>
+<div class="d-none" id="onetrust-style"> </div>
+<div class="d-none js-consent-banner-version" data-consent-banner-version="1"></div>
+</body>
+</html>
