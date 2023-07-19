@@ -1,27 +1,25 @@
 from bs4 import BeautifulSoup
 from bs4 import NavigableString
 
-def fixWord(soup, line, word):
-    word = list(word)
-
+def fixWord(soup, word):
     bold_part = BeautifulSoup.new_tag(soup, 'b')
     pre = NavigableString('')
     post = NavigableString('')
 
     # append first half to bold part
     counter = 0
-    for char in word:
-        if counter == 0 and not char.isalpha():
+    for char in list(word):
+        if counter == 0 and not char.isalpha() and not char.isupper():
             pre += char
         elif counter < len(word)//2:
-            counter += 1
+            if char.islower(): counter += 1
             bold_part.append(char)
         else:
             post += char
-    if bold_part.get_text() == '': line.extend([pre, post, ' '])
-    else: line.extend([pre, bold_part, post, ' '])
+    if counter == 0: return [NavigableString(word + ' ')]
+    else: return [pre, bold_part, post, ' ']
 
-with open('input.html') as html_file:
+with open('pg2554-images.html') as html_file:
     soup = BeautifulSoup(html_file.read(), features='html.parser')
 
     # add style
@@ -31,16 +29,37 @@ with open('input.html') as html_file:
 
     for tag in soup.findAll('p'):
         # Remove all <i> tags - TODO: fix this
-        if tag.string is None and tag.findAll('i') == []: continue
-        line = BeautifulSoup.new_tag(soup, 'p')
-        line.attrs = tag.attrs
-        line.attrs['class'] = 'm'
-        for word in tag.get_text().split(' '):
-            fixWord(soup, line, word)
-        tag.replace_with(line)
+        if tag.findAll('i') != [] or tag.findAll('br') != [] or tag.findAll('strong') != [] or tag.findAll('a') != []: 
+            line = BeautifulSoup.new_tag(soup, 'p')
+            line.attrs = tag.attrs
+            line.attrs['class'] = line.get('class', []) + ['m']
+            array = []
+            for child in tag.children:
+                if child.name != 'i' and child.name != 'br' and child.name != 'strong' and child.name != 'a':
+                    for word in child.get_text().split(' '):
+                        array += fixWord(soup, word)
+                elif child.name == 'br':
+                    array += child
+                elif child.name == 'strong' or child.name == 'i' or child.name == 'a':
+                    italic = BeautifulSoup.new_tag(soup, child.name)
+                    italic.attrs = child.attrs
+                    for word in child.get_text().split(' '):
+                        italic.extend(fixWord(soup, word))
+                    line.extend(array)
+                    array = []
+                    line.append(italic)
+            line.extend(array)
+            tag.replace_with(line)
+        elif tag.get_text() is not None:
+            line = BeautifulSoup.new_tag(soup, 'p')
+            line.attrs = tag.attrs
+            line.attrs['class'] = line.get('class', []) + ['m']
+            for word in tag.get_text().split(' '):
+                line.extend(fixWord(soup, word))
+            tag.replace_with(line)
 
     # Store prettified version of modified html
-    soup.smooth()
+    # soup.smooth()
     new_text = soup.encode()
 
 # Write new contents to test.html
